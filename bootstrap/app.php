@@ -27,7 +27,7 @@ $app->configure('graphql');
 
 $app->withFacades();
 
-// $app->withEloquent();
+$app->withEloquent();
 
 /*
 |--------------------------------------------------------------------------
