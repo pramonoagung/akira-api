@@ -15,7 +15,12 @@ class CreateStatusReservasiTable extends Migration
     {
         Schema::create('status_reservasi', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('header_reservasi_id');
+            $table->dateTime('tanggal');
+            $table->string('status');
+            $table->string('progress')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
