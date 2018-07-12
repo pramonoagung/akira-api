@@ -23,8 +23,6 @@ $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
 
-$app->configure('graphql');
-
 $app->withFacades();
 
 $app->withEloquent();
@@ -61,9 +59,9 @@ $app->singleton(
 |
 */
 
-// $app->middleware([
-//    App\Http\Middleware\ExampleMiddleware::class
-// ]);
+$app->middleware([
+   App\Http\Middleware\CorsMiddleware::class
+]);
 
 // $app->routeMiddleware([
 //     'auth' => App\Http\Middleware\Authenticate::class,
@@ -79,10 +77,18 @@ $app->singleton(
 | totally optional, so you are not required to uncomment this line.
 |
 */
+
+$app->register(App\Providers\AppServiceProvider::class);
+$app->register(App\Providers\AuthServiceProvider::class);
+$app->register(App\Providers\EventServiceProvider::class);
+
+$app->singleton('filesystem', function ($app) { return $app->loadComponent('filesystems', 'Illuminate\Filesystem\FilesystemServiceProvider', 'filesystem'); });
+
+$app->configure('graphql');
+
+// Domain Service
+$app->register(Thunderlabid\Otorisasi\OtorisasiServiceProvider::class);
 $app->register(Folklore\GraphQL\LumenServiceProvider::class);
-// $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
-// $app->register(App\Providers\EventServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -94,7 +100,6 @@ $app->register(Folklore\GraphQL\LumenServiceProvider::class);
 | can respond to, as well as the controllers that may handle them.
 |
 */
-
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
 ], function ($router) {
