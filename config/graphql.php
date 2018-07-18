@@ -129,6 +129,9 @@ return [
 				// Version		 	//
 				//////////////////////
 				'users'				=> App\GraphQL\Query\User\UsersQuery::class,
+				'headerReservasi'	=> App\GraphQL\Query\Reservasi\ReservasiHQ::class,
+				'statusReservasi'	=> App\GraphQL\Query\Reservasi\ReservasiSQ::class,
+				'detailReservasi'	=> App\GraphQL\Query\Reservasi\ReservasiDQ::class
 			],
 			'mutation' => [
 				/*
@@ -142,6 +145,18 @@ return [
 				'AddScope'			=> App\GraphQL\Mutation\User\AddScope::class,
 				'RemoveScope'		=> App\GraphQL\Mutation\User\RemoveScope::class,
 				'Deactivate'		=> App\GraphQL\Mutation\User\Deactivate::class,
+				'createHeaderReservasi'	=> App\GraphQL\Mutation\Reservasi\HeaderRCM::class,
+				'updateHeaderReservasi'	=> App\GraphQL\Mutation\Reservasi\HeaderRUM::class,
+				'deleteHeaderReservasi'	=> App\GraphQL\Mutation\Reservasi\HeaderRDM::class,
+
+				'createStatusReservasi'	=> App\GraphQL\Mutation\Reservasi\StatusRCM::class,
+				'updateStatusReservasi'	=> App\GraphQL\Mutation\Reservasi\StatusRUM::class,
+				'deleteStatusReservasi'	=> App\GraphQL\Mutation\Reservasi\StatusRDM::class,
+
+				'createDetailReservasi'	=> App\GraphQL\Mutation\Reservasi\DetailRCM::class,
+				'updateDetailReservasi'	=> App\GraphQL\Mutation\Reservasi\DetailRUM::class,
+				'deleteDetailReservasi'	=> App\GraphQL\Mutation\Reservasi\DetailRDM::class,
+				
 			],
 		],
 		'me' => [
@@ -213,6 +228,9 @@ return [
 		App\GraphQL\Type\User\IUser::class,
 		App\GraphQL\Type\User\IUserOrganization::class,
 		App\GraphQL\Type\User\IUserOrganizationScope::class,
+		App\GraphQL\Type\Reservasi\ReservasiDT::class,
+		App\GraphQL\Type\Reservasi\ReservasiHT::class,
+		App\GraphQL\Type\Reservasi\ReservasiST::class
 	],
 
 	/*
