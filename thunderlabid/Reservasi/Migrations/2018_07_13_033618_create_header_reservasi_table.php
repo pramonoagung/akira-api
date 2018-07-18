@@ -17,6 +17,7 @@ class CreateHeaderReservasiTable extends Migration
             $table->increments('id');
             $table->dateTime('tanggal_reservasi');
             $table->text('tamu');
+            $table->string('kode');
             $table->timestamps();
             $table->softDeletes();
         });

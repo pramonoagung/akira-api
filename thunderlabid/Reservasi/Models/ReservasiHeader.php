@@ -1,6 +1,6 @@
 <?php
 
-namespace thunderlabid\Reservasi\Models;
+namespace Thunderlabid\Reservasi\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -12,19 +12,19 @@ class ReservasiHeader extends Model
     protected $table = "header_reservasi";
     
     protected $fillable = [
-        'tanggal_reservasi', 'tamu',
+        'tanggal_reservasi', 'tamu', 'kode'
     ];
     
     protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
     
     public function detail_reservasi()
     {
-        return $this->hasMany('thunderlabid\Reservasi\Models\ReservasiDetail', 'detail_reservasi_id');
+        return $this->hasMany('Thunderlabid\Reservasi\Models\ReservasiDetail', 'header_reservasi_id');
     }     
     
     public function status_reservasi()
     {
-        return $this->hasMany('thunderlabid\Reservasi\Models\ReservasiStatus', 'status_reservasi_id');
+        return $this->hasMany('Thunderlabid\Reservasi\Models\ReservasiStatus', 'header_reservasi_id');
     }
 
 }

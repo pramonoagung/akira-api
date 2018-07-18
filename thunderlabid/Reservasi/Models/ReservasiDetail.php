@@ -1,6 +1,6 @@
 <?php
 
-namespace thunderlabid\Reservasi\Models;
+namespace Thunderlabid\Reservasi\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
