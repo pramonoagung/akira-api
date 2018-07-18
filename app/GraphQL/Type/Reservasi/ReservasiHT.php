@@ -25,6 +25,9 @@ class ReservasiHT extends BaseType
             'tamu' => [
                 'type' => Type::nonNull(Type::string()),
             ],
+            'kode' => [
+                'type' => Type::nonNull(Type::string()),
+            ],
             'detail_reservasi' => [
                 'args' => [
                     'id' => [

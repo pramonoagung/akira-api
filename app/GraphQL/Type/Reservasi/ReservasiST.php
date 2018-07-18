@@ -20,16 +20,16 @@ class ReservasiST extends BaseType
                 'type' => Type::nonNull(Type::int()),
             ],
             'tanggal' => [
-                'type' => Type::nonNull(Type::string()),
+                'type' => Type::string(),
             ],
             'status' => [
-                'type' => Type::nonNull(Type::int()),
+                'type' => Type::string(),
             ],
             'progress' => [
-                'type' => Type::int(),
+                'type' => Type::string(),
             ],
             'header_reservasi_id' => [
-                'type' => Type::nonNull(Type::int()),
+                'type' => Type::int(),
             ],
         ];
     }
