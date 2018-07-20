@@ -131,7 +131,9 @@ return [
 				'users'				=> App\GraphQL\Query\User\UsersQuery::class,
 				'headerReservasi'	=> App\GraphQL\Query\Reservasi\ReservasiHQ::class,
 				'statusReservasi'	=> App\GraphQL\Query\Reservasi\ReservasiSQ::class,
-				'detailReservasi'	=> App\GraphQL\Query\Reservasi\ReservasiDQ::class
+				'detailReservasi'	=> App\GraphQL\Query\Reservasi\ReservasiDQ::class,
+				'produk'			=> App\GraphQL\Query\Produk\ProdukQ::class
+
 			],
 			'mutation' => [
 				/*
@@ -156,6 +158,9 @@ return [
 				'createDetailReservasi'	=> App\GraphQL\Mutation\Reservasi\DetailRCM::class,
 				'updateDetailReservasi'	=> App\GraphQL\Mutation\Reservasi\DetailRUM::class,
 				'deleteDetailReservasi'	=> App\GraphQL\Mutation\Reservasi\DetailRDM::class,
+
+				'createProduk'	=> App\GraphQL\Mutation\Produk\ProdukCM::class,
+				'updateProduk'	=> App\GraphQL\Mutation\Produk\ProdukUM::class,
 				
 			],
 		],
@@ -230,7 +235,8 @@ return [
 		App\GraphQL\Type\User\IUserOrganizationScope::class,
 		App\GraphQL\Type\Reservasi\ReservasiDT::class,
 		App\GraphQL\Type\Reservasi\ReservasiHT::class,
-		App\GraphQL\Type\Reservasi\ReservasiST::class
+		App\GraphQL\Type\Reservasi\ReservasiST::class,
+		App\GraphQL\Type\Produk\ProdukT::class
 	],
 
 	/*
