@@ -131,7 +131,12 @@ return [
 				'users'				=> App\GraphQL\Query\User\UsersQuery::class,
 				'headerReservasi'	=> App\GraphQL\Query\Reservasi\ReservasiHQ::class,
 				'statusReservasi'	=> App\GraphQL\Query\Reservasi\ReservasiSQ::class,
-				'detailReservasi'	=> App\GraphQL\Query\Reservasi\ReservasiDQ::class
+				'detailReservasi'	=> App\GraphQL\Query\Reservasi\ReservasiDQ::class,
+				'HeaderTransaksi' 	=> App\GraphQL\Query\Pembayaran\HeaderQuery::class,
+                'Pembayaran' 		=> App\GraphQL\Query\Pembayaran\PembayaranQuery::class,
+                'DetailTransaksi' 	=> App\GraphQL\Query\Pembayaran\DetailQuery::class,
+                'Voucher' 			=> App\GraphQL\Query\Voucher\VoucherQuery::class,
+                'Kepemilikan' 		=> App\GraphQL\Query\Voucher\KepemilikanQuery::class,
 			],
 			'mutation' => [
 				/*
@@ -156,6 +161,26 @@ return [
 				'createDetailReservasi'	=> App\GraphQL\Mutation\Reservasi\DetailRCM::class,
 				'updateDetailReservasi'	=> App\GraphQL\Mutation\Reservasi\DetailRUM::class,
 				'deleteDetailReservasi'	=> App\GraphQL\Mutation\Reservasi\DetailRDM::class,
+
+				'CreateHeader' => App\GraphQL\Mutation\Pembayaran\CreateHeader::class,
+				'UpdateHeader' => App\GraphQL\Mutation\Pembayaran\UpdateHeader::class,
+				'DeleteHeader' => App\GraphQL\Mutation\Pembayaran\DeleteHeader::class,
+
+                'CreatePembayaran' => App\GraphQL\Mutation\Pembayaran\CreatePembayaran::class,
+                'UpdatePembayaran' => App\GraphQL\Mutation\Pembayaran\UpdatePembayaran::class,
+                'DeletePembayaran' => App\GraphQL\Mutation\Pembayaran\DeletePembayaran::class,
+
+                'CreateDetail' => App\GraphQL\Mutation\Pembayaran\CreateDetail::class,
+                'UpdateDetail' => App\GraphQL\Mutation\Pembayaran\UpdateDetail::class,
+                'DeleteDetail' => App\GraphQL\Mutation\Pembayaran\DeleteDetail::class,
+
+                'CreateVoucher' => App\GraphQL\Mutation\Voucher\CreateVoucher::class,
+                'DeleteVoucher' => App\GraphQL\Mutation\Voucher\DeleteVoucher::class,
+
+                'CreateKepemilikan' => App\GraphQL\Mutation\Voucher\CreateKepemilikan::class,
+                'UpdateKepemilikan' => App\GraphQL\Mutation\Voucher\UpdateKepemilikan::class,
+                
+                
 				
 			],
 		],
@@ -230,7 +255,13 @@ return [
 		App\GraphQL\Type\User\IUserOrganizationScope::class,
 		App\GraphQL\Type\Reservasi\ReservasiDT::class,
 		App\GraphQL\Type\Reservasi\ReservasiHT::class,
-		App\GraphQL\Type\Reservasi\ReservasiST::class
+		App\GraphQL\Type\Reservasi\ReservasiST::class,
+		App\GraphQL\Type\Pembayaran\DetailType::class,
+		App\GraphQL\Type\Pembayaran\HeaderType::class,
+		App\GraphQL\Type\Pembayaran\PembayaranType::class,
+		App\GraphQL\Type\Voucher\KepemilikanType::class,
+		App\GraphQL\Type\Voucher\VoucherType::class,
+
 	],
 
 	/*
