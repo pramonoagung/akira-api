@@ -20,7 +20,7 @@ class ReservasiDT extends BaseType
                 'type' => Type::int(),
             ],
             'durasi' => [
-                'type' => Type::string(),
+                'type' => Type::int(),
             ],
             'produk' => [
                 'type' => Type::string(),
