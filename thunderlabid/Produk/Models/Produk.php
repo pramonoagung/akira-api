@@ -9,6 +9,6 @@ class Produk extends Model
     protected $table = "produk";
 
     protected $fillable = [
-        'nama', 'waktu', 'harga', 'deskripsi'
+        'nama', 'kode', 'waktu', 'harga', 'deskripsi'
     ];
 }
