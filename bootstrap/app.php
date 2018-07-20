@@ -89,6 +89,9 @@ $app->configure('graphql');
 // Domain Service
 $app->register(Thunderlabid\Otorisasi\OtorisasiServiceProvider::class);
 $app->register(Thunderlabid\Reservasi\ReservasiServiceProvider::class);
+$app->register(Thunderlabid\Produk\ProdukServiceProvider::class);
+$app->register(Thunderlabid\Pembayaran\PembayaranServiceProvider::class);
+$app->register(Thunderlabid\Voucher\VoucherServiceProvider::class);
 $app->register(Folklore\GraphQL\LumenServiceProvider::class);
 
 /*
