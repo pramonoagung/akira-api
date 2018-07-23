@@ -19,6 +19,6 @@ class ReservasiDetail extends Model
 
     public function header_reservasi()
     {
-        return $this->belongsTo('thunderlabid\Reservasi\Models\ReservasiHeader', 'header_reservasi_id');
+        return $this->belongsTo('Thunderlabid\Reservasi\Models\ReservasiHeader');
     }
 }
