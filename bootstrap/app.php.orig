@@ -90,9 +90,11 @@ $app->configure('graphql');
 $app->register(Thunderlabid\Otorisasi\OtorisasiServiceProvider::class);
 $app->register(Thunderlabid\Reservasi\ReservasiServiceProvider::class);
 $app->register(Thunderlabid\Produk\ProdukServiceProvider::class);
-$app->register(Thunderlabid\Terapis\TerapisServiceProvider::class);
+<<<<<<< HEAD
+=======
 $app->register(Thunderlabid\Pembayaran\PembayaranServiceProvider::class);
 $app->register(Thunderlabid\Voucher\VoucherServiceProvider::class);
+>>>>>>> c5459450afee791bc29b7d040944a95bb19e59aa
 $app->register(Folklore\GraphQL\LumenServiceProvider::class);
 
 /*
