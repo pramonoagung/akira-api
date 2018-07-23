@@ -132,13 +132,16 @@ return [
 				'headerReservasi'	=> App\GraphQL\Query\Reservasi\ReservasiHQ::class,
 				'statusReservasi'	=> App\GraphQL\Query\Reservasi\ReservasiSQ::class,
 				'detailReservasi'	=> App\GraphQL\Query\Reservasi\ReservasiDQ::class,
+<<<<<<< HEAD
+				'produk'			=> App\GraphQL\Query\Produk\ProdukQ::class
+
+=======
 				'HeaderTransaksi' 	=> App\GraphQL\Query\Pembayaran\HeaderQuery::class,
                 'Pembayaran' 		=> App\GraphQL\Query\Pembayaran\PembayaranQuery::class,
                 'DetailTransaksi' 	=> App\GraphQL\Query\Pembayaran\DetailQuery::class,
                 'Voucher' 			=> App\GraphQL\Query\Voucher\VoucherQuery::class,
-				'Kepemilikan' 		=> App\GraphQL\Query\Voucher\KepemilikanQuery::class,
-				'produk'			=> App\GraphQL\Query\Produk\ProdukQ::class,
-				'terapis'			=> App\GraphQL\Query\Terapis\TerapisQ::class
+                'Kepemilikan' 		=> App\GraphQL\Query\Voucher\KepemilikanQuery::class,
+>>>>>>> c5459450afee791bc29b7d040944a95bb19e59aa
 			],
 			'mutation' => [
 				/*
@@ -164,6 +167,10 @@ return [
 				'updateDetailReservasi'	=> App\GraphQL\Mutation\Reservasi\DetailRUM::class,
 				'deleteDetailReservasi'	=> App\GraphQL\Mutation\Reservasi\DetailRDM::class,
 
+<<<<<<< HEAD
+				'createProduk'	=> App\GraphQL\Mutation\Produk\ProdukCM::class,
+				'updateProduk'	=> App\GraphQL\Mutation\Produk\ProdukUM::class,
+=======
 				'CreateHeader' => App\GraphQL\Mutation\Pembayaran\CreateHeader::class,
 				'UpdateHeader' => App\GraphQL\Mutation\Pembayaran\UpdateHeader::class,
 				'DeleteHeader' => App\GraphQL\Mutation\Pembayaran\DeleteHeader::class,
@@ -182,9 +189,9 @@ return [
                 'CreateKepemilikan' => App\GraphQL\Mutation\Voucher\CreateKepemilikan::class,
                 'UpdateKepemilikan' => App\GraphQL\Mutation\Voucher\UpdateKepemilikan::class,
                 
-				'createProduk'	=> App\GraphQL\Mutation\Produk\ProdukCM::class,
-				'updateProduk'	=> App\GraphQL\Mutation\Produk\ProdukUM::class,
-				'deleteProduk'	=> App\GraphQL\Mutation\Produk\ProdukDM::class
+                
+>>>>>>> c5459450afee791bc29b7d040944a95bb19e59aa
+				
 			],
 		],
 		'me' => [
@@ -259,14 +266,16 @@ return [
 		App\GraphQL\Type\Reservasi\ReservasiDT::class,
 		App\GraphQL\Type\Reservasi\ReservasiHT::class,
 		App\GraphQL\Type\Reservasi\ReservasiST::class,
+<<<<<<< HEAD
+		App\GraphQL\Type\Produk\ProdukT::class
+=======
 		App\GraphQL\Type\Pembayaran\DetailType::class,
 		App\GraphQL\Type\Pembayaran\HeaderType::class,
 		App\GraphQL\Type\Pembayaran\PembayaranType::class,
 		App\GraphQL\Type\Voucher\KepemilikanType::class,
 		App\GraphQL\Type\Voucher\VoucherType::class,
-		App\GraphQL\Type\Produk\ProdukT::class,
-		App\GraphQL\Type\Terapis\TerapisT::class,
-		App\GraphQL\Type\Terapis\CekTerapisT::class
+
+>>>>>>> c5459450afee791bc29b7d040944a95bb19e59aa
 	],
 
 	/*

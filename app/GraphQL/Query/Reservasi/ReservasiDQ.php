@@ -28,13 +28,14 @@ class ReservasiDQ extends Query
             'produk' => ['name' => 'produk', 'type' => Type::string()],
             'terapis' => ['name' => 'terapis', 'type' => Type::string()],
             'header_reservasi_id' => ['name' => 'header_reservasi_id', 'type' => Type::int()],
+            'header_reservasi' => ['name' => 'header_reservasi', 'type' => Type::int()]
         ];
     }
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
         if(isset($args['id'])){
-            return RD::findOrFail($args['id']);
+            return RD::where('id',$args['id'])->get();
         }elseif(isset($args['header_reservasi_id'])){
             return RD::where('header_reservasi_id', $args['header_reservasi_id'])->get();
         }else{
