@@ -4,6 +4,7 @@ use GraphQL;
 use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Mutation;
 use Thunderlabid\Pembayaran\Models\HeaderTransaksi;
+use App\Events\CheckVoucherEvent;
 /**
  * User Query
  */
@@ -26,6 +27,7 @@ class CreateHeader extends Mutation
 	}
 	public function resolve($root, $args)
 	{
+
 		HeaderTransaksi::create($args);
 
 		return HeaderTransaksi::all();
