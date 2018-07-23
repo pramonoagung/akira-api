@@ -12,7 +12,10 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\CekTerapisEvent' => [
+        'App\Events\CheckVoucherEvent' => [
+            'App\Listeners\CheckVoucherListener',
+        ],
+		 'App\Events\CekTerapisEvent' => [
             'App\Listeners\CekTerapisListener',
         ],
     ];

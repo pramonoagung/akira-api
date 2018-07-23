@@ -4,7 +4,8 @@ use GraphQL;
 use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Mutation;
 use Thunderlabid\Pembayaran\Models\Pembayaran;
-use Thunderlabid\Pembayaran\Models\Voucher;
+use Thunderlabid\Voucher\Models\Voucher;
+use App\Events\CheckVoucherEvent;
 /**
  * User Query
  */
@@ -29,15 +30,23 @@ class CreatePembayaran extends Mutation
 	}
 	public function resolve($root, $args)
 	{
-		$voucher = Voucher::where('kode',$args['referensi'])->first();
+		$check = new Pembayaran($args);
+		$event = event(new CheckVoucherEvent($check));
+
+		if($event){
+			Pembayaran::create($args);
+
+			return Pembayaran::all();
+		}
+		/*$voucher = Voucher::where('kode',$args['referensi'])->first();
 
         if($voucher) {
             Pembayaran::create($args);
 			return Pembayaran::all();
         }else
         {
-        	throw new \Exception("voucher not Exists", 999);
+        	echo "voucher not Exists";
         }
-		
+		*/
 	}
 }
