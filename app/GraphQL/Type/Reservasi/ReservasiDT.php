@@ -20,7 +20,7 @@ class ReservasiDT extends BaseType
                 'type' => Type::int(),
             ],
             'durasi' => [
-                'type' => Type::int(),
+                'type' => Type::string(),
             ],
             'produk' => [
                 'type' => Type::string(),
@@ -42,7 +42,7 @@ class ReservasiDT extends BaseType
                 'description' => 'header description',
                 'resolve' => function ($root, $args) {
                     if (isset($args['header_reservasi_id'])) {
-                        return  $root->header_reservasi->findOrFail('id', $args['header_reservasi_id']);
+                        return  $root->header_reservasi->where('id', $args['header_reservasi_id'])->get();
                     }
                     return $root->header_reservasi;
                 }
