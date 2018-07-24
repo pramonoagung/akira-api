@@ -18,5 +18,8 @@ class EventServiceProvider extends ServiceProvider
 		 'App\Events\CekTerapisEvent' => [
             'App\Listeners\CekTerapisListener',
         ],
+		 'App\Events\CekProdukEvent' => [
+            'App\Listeners\CekProdukListener',
+        ],
     ];
 }

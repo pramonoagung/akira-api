@@ -138,6 +138,7 @@ return [
                 'Voucher' 			=> App\GraphQL\Query\Voucher\VoucherQuery::class,
 				'Kepemilikan' 		=> App\GraphQL\Query\Voucher\KepemilikanQuery::class,
 				'produk'			=> App\GraphQL\Query\Produk\ProdukQ::class,
+				'cekProduk'			=> App\GraphQL\Query\Produk\CekProdukQ::class,
 				'terapis'			=> App\GraphQL\Query\Terapis\TerapisQ::class
 			],
 			'mutation' => [
@@ -266,7 +267,8 @@ return [
 		App\GraphQL\Type\Voucher\VoucherType::class,
 		App\GraphQL\Type\Produk\ProdukT::class,
 		App\GraphQL\Type\Terapis\TerapisT::class,
-		App\GraphQL\Type\Terapis\CekTerapisT::class
+		App\GraphQL\Type\Terapis\CekTerapisT::class,
+		App\GraphQL\Type\Produk\CekProdukT::class
 	],
 
 	/*
