@@ -2,7 +2,7 @@
 
 namespace App\GraphQL\Mutation\User;
 
-use GraphQL;
+use GraphQL, Auth;
 use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Mutation;
 
@@ -19,6 +19,16 @@ class AddScope extends Mutation
     public function type()
     {
         return GraphQL::type('User');
+    }
+
+    public function authorize($root, $args)
+    {
+        //1. kalau tidak login tolak request
+        if(!Auth::check()){
+            return false;
+        }
+        //2. kalau login terima request
+        return true;
     }
 
     public function args()
