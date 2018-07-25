@@ -2,7 +2,7 @@
 
 namespace App\GraphQL\Mutation\User;
 
-use GraphQL;
+use GraphQL, Auth;
 use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Mutation;
 
@@ -21,12 +21,22 @@ class AddOrganization extends Mutation
         return GraphQL::type('User');
     }
 
+    public function authorize($root, $args)
+    {
+        //1. kalau tidak login tolak request
+        if(!Auth::check()){
+            return false;
+        }
+        //2. kalau login terima request
+        return true;
+    }
+
     public function args()
     {
         return [
             'owner'     => ['name' => 'owner',  'type' => Type::listOf(GraphQL::type('IUser'))],
             'nama'      => ['name' => 'nama',   'type' => Type::string()],
-            'uuid'      => ['name' => 'uuid',   'type' => Type::string()]
+            // 'uuid'      => ['name' => 'uuid',   'type' => Type::string()]
         ];
     }
 
@@ -38,11 +48,11 @@ class AddOrganization extends Mutation
             throw new \Exception("User not found", 999);
         }
 
-        $tenant            = Tenant::where('uuid', $args['uuid'])->first();
+        // $tenant            = Tenant::where('uuid', $args['uuid'])->first();
 
-        if ($tenant) {
-            throw new \Exception("Organization already exists", 999);
-        }
+        // if ($tenant) {
+        //     throw new \Exception("Organization already exists", 999);
+        // }
 
         $tenant             = new Tenant;
         $tenant->nama       = $args['nama'];

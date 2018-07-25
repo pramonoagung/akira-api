@@ -2,9 +2,13 @@
 
 namespace App\Providers;
 
-use App\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use Folklore\GraphQL\Error\AuthorizationError;
+
+use Firebase\JWT\JWT;
+
+use Thunderlabid\Otorisasi\Models\User;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,15 +29,26 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Here you may define how you wish users to be authenticated for your Lumen
-        // application. The callback which receives the incoming request instance
-        // should return either a User instance or null. You're free to obtain
-        // the User instance via an API token or any other method necessary.
-
+        /////////////
+        // SESSION //
+        /////////////
         $this->app['auth']->viaRequest('api', function ($request) {
-            if ($request->input('api_token')) {
-                return User::where('api_token', $request->input('api_token'))->first();
+            
+            // Get Token
+            $token = substr($request->header('authorization'), strlen('Bearer '));
+
+            if ($token)
+            {
+                // Validate
+                $jwt = JWT::decode($token, env('JWT_KEY'), ['HS256']);
+                if ($jwt->iss !== env('JWT_ISS')) return null;
+                if ($jwt->aud !== env('JWT_AUD')) return null;
+                if (!$user = User::username($jwt->user_id)->first()) return null;
+
+                return $user;
             }
+
+            return null;
         });
     }
 }
