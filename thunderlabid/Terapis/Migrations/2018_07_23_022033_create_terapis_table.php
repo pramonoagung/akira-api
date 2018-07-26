@@ -16,6 +16,7 @@ class CreateTerapisTable extends Migration
         Schema::create('terapis', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama');
+            $table->float('rating');
             $table->boolean('status');
             $table->timestamps();
             $table->softDeletes();

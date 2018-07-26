@@ -14,12 +14,15 @@ class TerapisSeeder extends Seeder
     {
         $terapis = Terapis::create([
             'nama' => 'Mpok Ijah',
+            'rating' => 4.5,
             'status' => true]);
         $terapis = Terapis::create([
             'nama' => 'Mpok Sumi',
+            'rating' => 4,
             'status' => false]);
         $terapis = Terapis::create([
             'nama' => 'Pak Sutris',
+            'rating' => 4.3,
             'status' => true]);
     }
 }

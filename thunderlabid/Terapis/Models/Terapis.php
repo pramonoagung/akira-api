@@ -12,6 +12,6 @@ class Terapis extends Model
     protected $table = "terapis";
 
     protected $fillable = [
-        'nama', 'status',
+        'nama', 'status', 'rating'
     ];
 }

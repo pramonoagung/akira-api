@@ -22,6 +22,9 @@ class TerapisT extends BaseType
             'nama' => [
                 'type' => Type::nonNull(Type::string()),
             ],
+            'rating' => [
+                'type' => Type::nonNull(Type::float()),
+            ],
             'status' => [
                 'type' => Type::nonNull(Type::string()),
             ]
