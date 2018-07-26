@@ -16,9 +16,6 @@ class CekTerapisT extends BaseType
     public function fields()
     {
         return [
-             'id' => [
-                'type' => Type::int(),
-            ],
             'status' => [
                 'type' => Type::string(),
             ]

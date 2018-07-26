@@ -7,18 +7,17 @@ use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use GraphQL;
 use Thunderlabid\Terapis\Models\Terapis;
-use App\Events\CekTerapisEvent;
 
 class TerapisQ extends Query
 {
     protected $attributes = [
-        'name' => 'TerapisQ',
+        'name' => 'CekTerapisQ',
         'description' => 'A query'
     ];
 
     public function type()
     {
-        return GraphQL::type('CekTerapisT');
+        return Type::listOf(GraphQL::type('TerapisT'));
     }
 
     public function args()
@@ -38,13 +37,10 @@ class TerapisQ extends Query
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-        $cekTerapis = (boolean)event(new CekTerapisEvent($args['id']));
-
-        if($cekTerapis){
-            return ['id' => '', 'status' => 'Tersedia'];
+        if(isset($args['id'])){
+            return Terapis::where('id', $args['id'])->get();
         }else{
-            return ['id' => '', 'status' => 'Tidak Tersedia'];
+            return Terapis::all();
         }
-
     }
 }
