@@ -23,10 +23,10 @@ class TerapisT extends BaseType
                 'type' => Type::nonNull(Type::string()),
             ],
             'rating' => [
-                'type' => Type::nonNull(Type::float()),
+                'type' => Type::float(),
             ],
             'status' => [
-                'type' => Type::nonNull(Type::string()),
+                'type' =>Type::string(),
             ]
         ];
     }

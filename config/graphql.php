@@ -158,6 +158,10 @@ return [
 				'updateHeaderReservasi'	=> App\GraphQL\Mutation\Reservasi\HeaderRUM::class,
 				'deleteHeaderReservasi'	=> App\GraphQL\Mutation\Reservasi\HeaderRDM::class,
 
+				'createTerapis'	=> App\GraphQL\Mutation\Terapis\TerapisCM::class,
+				'updateTerapis'	=> App\GraphQL\Mutation\Terapis\TerapisUM::class,
+				'deleteTerapis'	=> App\GraphQL\Mutation\Terapis\TerapisDM::class,
+
 				'createStatusReservasi'	=> App\GraphQL\Mutation\Reservasi\StatusRCM::class,
 				'updateStatusReservasi'	=> App\GraphQL\Mutation\Reservasi\StatusRUM::class,
 				'deleteStatusReservasi'	=> App\GraphQL\Mutation\Reservasi\StatusRDM::class,
