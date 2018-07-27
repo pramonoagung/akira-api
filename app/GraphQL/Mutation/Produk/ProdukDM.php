@@ -6,6 +6,7 @@ use Folklore\GraphQL\Support\Mutation;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use GraphQL;
+use Thunderlabid\Produk\Models\Produk;
 
 class ProdukDM extends Mutation
 {
@@ -16,18 +17,20 @@ class ProdukDM extends Mutation
 
     public function type()
     {
-        return Type::listOf(Type::string());
+        return GraphQL::type('ProdukT');
     }
 
     public function args()
     {
         return [
-            
+            'id'    => ['name'=> 'id', 'type' => Type::int(), 'rule' => ['required']]  
         ];
     }
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-        return [];
+        $produk = Produk::findOrFail($args['id']);
+        $produk->delete();
+        return $produk;
     }
 }

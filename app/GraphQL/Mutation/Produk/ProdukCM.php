@@ -23,7 +23,7 @@ class ProdukCM extends Mutation
     public function args()
     {
         return [
-            'nama' => ['id'=> 'nama', 'type' => Type::nonNull(Type::string())],
+            'nama' => ['name'=> 'nama', 'type' => Type::nonNull(Type::string())],
             'kode' => ['name'=> 'kode', 'type' => Type::nonNull(Type::string())],
             'waktu' => ['name'=> 'waktu', 'type' => Type::nonNull(Type::int())],
             'harga' => ['name'=> 'harga', 'type' => Type::nonNull(Type::int())],

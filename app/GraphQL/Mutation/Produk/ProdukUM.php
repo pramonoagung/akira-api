@@ -17,7 +17,7 @@ class ProdukUM extends Mutation
 
     public function type()
     {
-        return Type::listOf(GraphQL::type('ProdukT')); 
+        return GraphQL::type('ProdukT'); 
     }
 
     public function args()
@@ -35,11 +35,11 @@ class ProdukUM extends Mutation
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
         $produk = Produk::findOrFail($args['id']);
-        $args['nama']? $produk->nama = $args['nama']:'';
-        $args['kode']? $produk->kode = $args['kode']:'';
-        $args['waktu']? $produk->waktu = $args['waktu']:'';
-        $args['harga']? $produk->harga = $args['harga']:'';
-        $args['deskripsi']? $produk->deskripsi = $args['deskripsi']:'';
+        isset($args['nama'])? $produk->nama = $args['nama']:'';
+        isset($args['kode'])? $produk->kode = $args['kode']:'';
+        isset($args['waktu'])? $produk->waktu = $args['waktu']:'';
+        isset($args['harga'])? $produk->harga = $args['harga']:'';
+        isset($args['deskripsi'])? $produk->deskripsi = $args['deskripsi']:'';
         $produk->save();
 
         return $produk;
