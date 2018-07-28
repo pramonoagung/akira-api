@@ -10,7 +10,7 @@ class Kepemilikan extends Model
 	public $table = "Kepemilikan";
 	use SoftDeletes;
 	protected $dates = ['deleted_at'];
-    protected $fillable = ['tanggal','pemilik'];
+    protected $fillable = ['tanggal','pemilik','id_voucher'];
 
     public function voucher(){
     	return $this->belongsTo('Thunderlabid\Voucher\Models\Voucher','id_voucher');
