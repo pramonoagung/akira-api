@@ -7,11 +7,11 @@ use Thunderlabid\Voucher\Models\Voucher;
 /**
  * User Query
  */
-class CreateVoucher extends Mutation
+class UpdateVoucher extends Mutation
 {
 	
 	protected $attributes = [
-		'name' => 'CreateVoucher'
+		'name' => 'UpdateVoucher'
 	];
 	public function type()
 	{
@@ -20,15 +20,23 @@ class CreateVoucher extends Mutation
 	public function args()
 	{
 		return [
+			'id' => ['name' => 'id', 'type' => Type::int()],
 			'kode' => ['name' => 'kode', 'type' => Type::string()],
 			'jenis' => ['name' => 'jenis', 'type' => Type::string()],
 			'syarat' => ['name' => 'syarat', 'type' => Type::string()],
-			'tanggal_kadaluarsa' => ['name' => 'tanggal_kadaluarsa', 'type' => Type::string()],
+			'tanggal_kadaluarsa' => ['name' => 'tanggal_kadaluarsa', 'type' => Type::string()]
 		];
 	}
 	public function resolve($root, $args)
 	{
-		Voucher::create($args);
+		$data = Voucher::find($args['id']);
+
+		$data->kode = $args['kode'];
+		$data->jenis = $args['jenis'];
+		$data->syarat = $args['syarat'];
+		$data->tanggal_kadaluarsa = $args['tanggal_kadaluarsa'];
+		
+        $data->save();
 
 		return Voucher::all();
 	}

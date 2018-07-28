@@ -183,6 +183,7 @@ return [
                 'DeleteDetail' => App\GraphQL\Mutation\Pembayaran\DeleteDetail::class,
 
                 'CreateVoucher' => App\GraphQL\Mutation\Voucher\CreateVoucher::class,
+                'UpdateVoucher' => App\GraphQL\Mutation\Voucher\UpdateVoucher::class,
                 'DeleteVoucher' => App\GraphQL\Mutation\Voucher\DeleteVoucher::class,
 
                 'CreateKepemilikan' => App\GraphQL\Mutation\Voucher\CreateKepemilikan::class,
