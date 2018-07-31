@@ -26,17 +26,8 @@ class TerapisT extends BaseType
                 'type' => Type::float(),
             ],
             'status' => [
-                'type' =>Type::string(),
+                'type' =>Type::boolean(),
             ]
         ];
-    }
-
-    protected function resolveStatusField($root, $args)
-    {
-        if($root->status){
-            return "Tersedia";
-        }else{
-            return "Tidak Tersedia";
-        }
     }
 }

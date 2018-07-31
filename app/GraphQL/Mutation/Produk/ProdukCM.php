@@ -24,7 +24,6 @@ class ProdukCM extends Mutation
     {
         return [
             'nama' => ['name'=> 'nama', 'type' => Type::nonNull(Type::string())],
-            'kode' => ['name'=> 'kode', 'type' => Type::nonNull(Type::string())],
             'waktu' => ['name'=> 'waktu', 'type' => Type::nonNull(Type::int())],
             'harga' => ['name'=> 'harga', 'type' => Type::nonNull(Type::int())],
             'deskripsi' => ['name'=> 'deskripsi', 'type' => Type::nonNull(Type::string())],
@@ -39,4 +38,5 @@ class ProdukCM extends Mutation
 
         return $produk;
     }
+
 }
