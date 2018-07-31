@@ -33,7 +33,7 @@ class KepemilikanQuery extends Query
 		}else if (isset($args['pemilik'])) {
 			return Kepemilikan::where('pemilik', $args['pemilik'])->get();
 		}else{
-			return Saldo::all();
+			return Kepemilikan::all();
 		}
 	}
 }
