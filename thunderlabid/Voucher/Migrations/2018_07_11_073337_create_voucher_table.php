@@ -23,8 +23,8 @@ class CreateVoucherTable extends Migration
             $table->dateTime('tanggal_kadaluarsa');
             $table->softDeletes();
             $table->timestamps();
-            $table->string('owner_id');
-            $table->foreign('owner_id')->references('username')->on('o_users')->onDelete('cascade');
+            $table->unsignedInteger('owner_id')->index();
+            $table->foreign('owner_id')->references('id')->on('o_users')->onDelete('cascade');
         });
     }
 

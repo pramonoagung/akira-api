@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
             'jenis' => 'diskon',
             'syarat' => 'tidak ada',
             'tanggal_kadaluarsa' => '2018-08-22 13:44:27',
-            'owner_id' => $user->username
+            'owner_id' => $user->id
         ]);
 
         $pemilik = Kepemilikan::create([

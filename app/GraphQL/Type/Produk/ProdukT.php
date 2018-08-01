@@ -32,7 +32,7 @@ class ProdukT extends BaseType
                 'type' => Type::nonNull(Type::int()),
             ],
             'deskripsi' => [
-                'type' => Type::nonNull(Type::string()),
+                'type' => Type::string(),
             ],
             
         ];

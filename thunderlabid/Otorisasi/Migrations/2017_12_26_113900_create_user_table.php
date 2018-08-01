@@ -15,7 +15,7 @@ class CreateUserTable extends Migration
     {
         Schema::create('o_users', function ($table) {
             // Id
-            $table->BigIncrements('id');
+            $table->increments('id');
             $table->string('username')->unique();
 
             // Attr

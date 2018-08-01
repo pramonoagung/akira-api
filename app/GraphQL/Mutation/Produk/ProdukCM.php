@@ -26,7 +26,7 @@ class ProdukCM extends Mutation
             'nama' => ['name'=> 'nama', 'type' => Type::nonNull(Type::string())],
             'waktu' => ['name'=> 'waktu', 'type' => Type::nonNull(Type::int())],
             'harga' => ['name'=> 'harga', 'type' => Type::nonNull(Type::int())],
-            'deskripsi' => ['name'=> 'deskripsi', 'type' => Type::nonNull(Type::string())],
+            'deskripsi' => ['name'=> 'deskripsi', 'type' => Type::string()],
         ];
     }
 

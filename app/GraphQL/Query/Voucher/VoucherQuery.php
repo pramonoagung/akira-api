@@ -24,7 +24,8 @@ class VoucherQuery extends Query
 			'kode' => ['name' => 'kode', 'type' => Type::string()],
 			'jenis' => ['name' => 'jenis', 'type' => Type::string()],
 			'syarat' => ['name' => 'syarat', 'type' => Type::string()],
-			'tanggal_kadaluarsa' => ['name' => 'tanggal_kadaluarsa', 'type' => Type::string()]
+			'tanggal_kadaluarsa' => ['name' => 'tanggal_kadaluarsa', 'type' => Type::string()],
+			'owner_id' => ['name' => 'owner_id', 'type' => Type::int()],
 		];
 	}
 	public function resolve($root, $args)

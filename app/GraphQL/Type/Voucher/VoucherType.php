@@ -18,7 +18,7 @@ class VoucherType extends GraphQLType
 	{
 		return [
 			'id' => [
-				'type' => Type::int(),
+				'type' => Type::string(),
 				'description' => 'ID Voucher'
 			],
 			'kode' => [
@@ -46,7 +46,7 @@ class VoucherType extends GraphQLType
 					],
 				],
 
-				'type' => Type::listOf(GraphQL::type('User')),
+				'type' => GraphQL::type('User'),
 				'description' => 'foreign Voucher id di table kepemilikan',
 
 				'resolve' =>function($root,$args){

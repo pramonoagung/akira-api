@@ -47,10 +47,7 @@ class User extends GraphQLType
 		];
 	}
 
-	protected function resolveIdField($root, $args)
-	{
-		return $root->username;
-	}
+
 
 	protected function resolveOrganizationsField($root, $args)
 	{
