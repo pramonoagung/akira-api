@@ -2,6 +2,7 @@
 namespace App\GraphQL\Type\Voucher;
 use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Type as GraphQLType;
+Use App\GraphQL\Type\User\User;
 use GraphQL;
 /**
  * User Type
@@ -17,7 +18,7 @@ class VoucherType extends GraphQLType
 	{
 		return [
 			'id' => [
-				'type' => Type::nonNull(Type::int()),
+				'type' => Type::int(),
 				'description' => 'ID Voucher'
 			],
 			'kode' => [
@@ -35,23 +36,24 @@ class VoucherType extends GraphQLType
 			'tanggal_kadaluarsa' => [
 				'type' => Type::string(),
 				'description' => 'tanggal_kadaluarsa Voucher'
-			],
-			'id_kepemilikan' => [
+			]
+			,
+			'owner_id' => [
 				'args' => [
 					'id' =>[
-						'type' => Type::int(),
+						'type' => Type::string(),
 						'description' => 'foreign Voucher id di table kepemilikan',
 					],
 				],
 
-				'type' => Type::listOf(GraphQL::type('KepemilikanType')),
+				'type' => Type::listOf(GraphQL::type('User')),
 				'description' => 'foreign Voucher id di table kepemilikan',
 
 				'resolve' =>function($root,$args){
 					if(isset($args['id'])){
-						return $root->kepemilikan->where('id_kepemilikan',$args['id']);
+						return $root->owner->where('owner_id',$args['id']);
 					}
-					return $root->kepemilikan;
+					return $root->owner;
 				}
 			]
 		];

@@ -20,7 +20,7 @@ class CreateKepemilikanTable extends Migration
             $table->softDeletes();
             $table->timestamps();
             $table->integer('id_voucher')->unsigned();
-            $table->foreign('id_voucher')->references('id')->on('Voucher');
+            $table->foreign('id_voucher')->references('id')->on('Voucher')->onDelete('cascade');
 
         });
     }

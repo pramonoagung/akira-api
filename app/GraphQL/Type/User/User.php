@@ -26,6 +26,24 @@ class User extends GraphQLType
 			'nama'			=> 	[ 'type' 			=> Type::string()					],
 			'username'		=> 	[ 'type' 			=> Type::string()					],
 			'organizations'	=> 	[ 'type' 			=> Type::listOf(GraphQL::type('UserOrganization'))	],
+			'voucher' => [
+				'args' => [
+					'id' =>[
+						'type' => Type::string(),
+						'description' => 'Header id',
+					],
+				],
+
+				'type' => GraphQL::type('VoucherType'),
+				'description' => 'foreign header transaksi id',
+
+				'resolve' =>function($root,$args){
+					if(isset($args['id'])){
+						return $root->voucherlist->where('voucher',$args['id']);
+					}
+					return $root->voucherlist;
+				}
+			],
 		];
 	}
 

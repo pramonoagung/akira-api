@@ -15,7 +15,5 @@ class DatabaseSeeder extends Seeder
         $this->call('ReservasiSeeder');
         $this->call('ProdukSeeder');
         $this->call('TerapisSeeder');
-        $this->call('TransaksiSeeder');
-        $this->call('VoucherSeeder');
-    }
+        $this->call('TransaksiSeeder');    }
 }

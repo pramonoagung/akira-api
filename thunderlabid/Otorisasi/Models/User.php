@@ -89,4 +89,8 @@ class User extends Model
 		return $q->where('created_at', '>=', $date1)
 			  	 ->where('created_at', '<=', $date2);
 	}
+
+	public function voucherlist(){
+    	return $this->hasMany('Thunderlabid\Voucher\Models\Voucher','owner_id');
+    }
 }

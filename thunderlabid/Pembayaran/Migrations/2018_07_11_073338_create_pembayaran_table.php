@@ -21,7 +21,7 @@ class CreatePembayaranTable extends Migration
             $table->softDeletes();
             $table->timestamps();
             $table->integer('id_header_transaksi')->unsigned();
-            $table->foreign('id_header_transaksi')->references('id')->on('Header_transaksi');
+            $table->foreign('id_header_transaksi')->references('id')->on('Header_transaksi')->onDelete('cascade');
         });
     }
 
