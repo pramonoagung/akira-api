@@ -19,7 +19,7 @@ class CreateVoucherTable extends Migration
             $table->string('jenis');
             $table->text('syarat');
             $table->boolean('status');
-            $table->dateTime('tanggal_pemakaian');
+            $table->timestamp('tanggal_pemakaian')->nullableTimestamps();
             $table->dateTime('tanggal_kadaluarsa');
             $table->string('logo_voucher');
             $table->string('logo_qr');
