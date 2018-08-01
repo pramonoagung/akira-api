@@ -1,0 +1,44 @@
+<?php 
+namespace App\GraphQL\Query\Manajemen;
+use GraphQL;
+use GraphQL\Type\Definition\Type;
+use Folklore\GraphQL\Support\Query;
+use Thunderlabid\Manajemen\Models\Karyawan;
+/**
+ * User Query
+ */
+class KaryawanQuery extends Query
+{
+	
+	protected $attributes = [
+		'name' => 'KaryawanQuery'
+	];
+	public function type()
+	{
+		return Type::listOf(GraphQL::type('KaryawanType'));
+	}
+	public function args()
+	{
+		return [
+			'id' => ['name' => 'id', 'type' => Type::int()],
+			'uuid' => ['name' => 'uuid', 'type' => Type::string()],
+			'nip' => ['name' => 'nip', 'type' => Type::string()],
+			'nama' => ['name' => 'nama', 'type' => Type::string()]
+		];
+	}
+	public function resolve($root, $args)
+	{
+		if (isset($args['id'])) {
+			return Karyawan::where('id', $args['id'])->get();
+		}elseif(isset($args['uuid'])){
+			return Karyawan::where('uuid', $args['uuid'])->get();
+		}elseif(isset($args['nip'])){
+			return Karyawan::where('nip', $args['nip'])->get();
+		}elseif(isset($args['nama'])){
+			return Karyawan::where('nama', $args['nama'])->get();
+		}else{
+			return Karyawan::all();
+		}
+	}
+
+}
