@@ -32,6 +32,7 @@ class UserSeeder extends Seeder
             'kode' => 'halo123',
             'jenis' => 'diskon',
             'syarat' => 'tidak ada',
+            'status' => '1',
             'tanggal_kadaluarsa' => '2018-08-22 13:44:27',
             'logo_voucher' => 'path/gambar/asd',
             'logo_qr' => 'path/qr/asd',
