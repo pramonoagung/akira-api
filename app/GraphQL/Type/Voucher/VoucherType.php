@@ -33,6 +33,14 @@ class VoucherType extends GraphQLType
 				'type' => Type::string(),
 				'description' => 'syarat Voucher'
 			],
+			'logo_voucher' => [
+				'type' => Type::string(),
+				'description' => 'logo_voucher Voucher'
+			],
+			'logo_qr' => [
+				'type' => Type::string(),
+				'description' => 'logo_qr Voucher'
+			],
 			'tanggal_kadaluarsa' => [
 				'type' => Type::string(),
 				'description' => 'tanggal_kadaluarsa Voucher'
@@ -41,7 +49,7 @@ class VoucherType extends GraphQLType
 			'owner_id' => [
 				'args' => [
 					'id' =>[
-						'type' => Type::string(),
+						'type' => Type::int(),
 						'description' => 'foreign Voucher id di table kepemilikan',
 					],
 				],

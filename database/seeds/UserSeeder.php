@@ -27,11 +27,14 @@ class UserSeeder extends Seeder
         $tenant = Tenant::create(['nama' => 'PANDORA']);
         $scope = Scope::create(['scope' => 'admin', 'user_id' => $user->id, 'tenant_id' => $tenant->id]);
 
-        $voucher = Voucher::create([
+        $voucher = Voucher::create(
+        [
             'kode' => 'halo123',
             'jenis' => 'diskon',
             'syarat' => 'tidak ada',
             'tanggal_kadaluarsa' => '2018-08-22 13:44:27',
+            'logo_voucher' => 'path/gambar/asd',
+            'logo_qr' => 'path/qr/asd',
             'owner_id' => $user->id
         ]);
 

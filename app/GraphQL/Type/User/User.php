@@ -29,12 +29,12 @@ class User extends GraphQLType
 			'voucher' => [
 				'args' => [
 					'id' =>[
-						'type' => Type::string(),
+						'type' => Type::int(),
 						'description' => 'Header id',
 					],
 				],
 
-				'type' => GraphQL::type('VoucherType'),
+				'type' => Type::listOf(GraphQL::type('VoucherType')),
 				'description' => 'foreign header transaksi id',
 
 				'resolve' =>function($root,$args){
