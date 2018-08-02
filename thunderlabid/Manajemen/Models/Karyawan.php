@@ -13,7 +13,7 @@ class Karyawan extends Model
     protected $fillable = ['uuid','nip','nama'];
 
     public function penempatan(){
-        return $this->hasMany('Thunderlabid\Manajemen\Models\Karyawan', 'karyawan_id');
+        return $this->hasMany('Thunderlabid\Manajemen\Models\Penempatan', 'karyawan_id');
     }
 
 }

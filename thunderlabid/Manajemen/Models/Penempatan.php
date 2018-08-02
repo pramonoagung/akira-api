@@ -21,7 +21,7 @@ class Penempatan extends Model
     }
 
     public function ketersediaan(){
-        return $this->hasMany('Thunderlabid\Manajemen\Models\ketersediaan_Terapis', 'penempatan_id');
+        return $this->hasMany('Thunderlabid\Manajemen\Models\ketersediaanTerapis', 'penempatan_id');
     }
 
 

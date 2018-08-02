@@ -140,7 +140,11 @@ return [
 				'produk'			=> App\GraphQL\Query\Produk\ProdukQ::class,
 				'cekProduk'			=> App\GraphQL\Query\Produk\CekProdukQ::class,
 				'terapis'			=> App\GraphQL\Query\Terapis\TerapisQ::class,
-				'cekTerapis'			=> App\GraphQL\Query\Terapis\CekTerapisQ::class
+				'cekTerapis'			=> App\GraphQL\Query\Terapis\CekTerapisQ::class,
+				'KaryawanQuery'		=> App\GraphQL\Query\Manajemen\KaryawanQuery::class,
+				'KetersediaanTerapisQuery'		=> App\GraphQL\Query\Manajemen\KetersediaanTerapisQuery::class,
+				'PenempatanQuery'		=> App\GraphQL\Query\Manajemen\PenempatanQuery::class,
+				'WorkshiftQuery'		=> App\GraphQL\Query\Manajemen\WorkshiftQuery::class,
 			],
 			'mutation' => [
 				/*
@@ -191,7 +195,23 @@ return [
                 
 				'createProduk'	=> App\GraphQL\Mutation\Produk\ProdukCM::class,
 				'updateProduk'	=> App\GraphQL\Mutation\Produk\ProdukUM::class,
-				'deleteProduk'	=> App\GraphQL\Mutation\Produk\ProdukDM::class
+				'deleteProduk'	=> App\GraphQL\Mutation\Produk\ProdukDM::class,
+
+				'CreateKaryawan' => App\GraphQL\Mutation\Manajemen\CreateKaryawan::class,
+				'CreateKetersediaanTerapis' => App\GraphQL\Mutation\Manajemen\CreateKetersediaanTerapis::class,
+				'CreatePenempatan' => App\GraphQL\Mutation\Manajemen\CreatePenempatan::class,
+				'CreateWorkshift' => App\GraphQL\Mutation\Manajemen\CreateWorkshift::class,
+
+				'UpdateKaryawan' => App\GraphQL\Mutation\Manajemen\UpdateKaryawan::class,
+				'UpdateKetersediaanTerapis' => App\GraphQL\Mutation\Manajemen\UpdateKetersediaanTerapis::class,
+				'UpdatePenempatan' => App\GraphQL\Mutation\Manajemen\UpdatePenempatan::class,
+				'UpdateWorkshift' => App\GraphQL\Mutation\Manajemen\UpdateWorkshift::class,
+
+				'DeleteKaryawan' => App\GraphQL\Mutation\Manajemen\DeleteKaryawan::class,
+				'DeleteKetersediaanTerapis' => App\GraphQL\Mutation\Manajemen\DeleteKetersediaanTerapis::class,
+				'DeletePenempatan' => App\GraphQL\Mutation\Manajemen\DeletePenempatan::class,
+				'DeleteWorkshift' => App\GraphQL\Mutation\Manajemen\DeleteWorkshift::class
+
 			],
 		],
 		'me' => [
@@ -274,7 +294,11 @@ return [
 		App\GraphQL\Type\Produk\ProdukT::class,
 		App\GraphQL\Type\Terapis\TerapisT::class,
 		App\GraphQL\Type\Terapis\CekTerapisT::class,
-		App\GraphQL\Type\Produk\CekProdukT::class
+		App\GraphQL\Type\Produk\CekProdukT::class,
+		App\GraphQL\Type\Manajemen\KaryawanType::class,
+		App\GraphQL\Type\Manajemen\KetersediaanTerapisType::class,
+		App\GraphQL\Type\Manajemen\PenempatanType::class,
+		App\GraphQL\Type\Manajemen\WorkshiftType::class
 	],
 
 	/*
