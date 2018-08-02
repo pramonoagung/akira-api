@@ -31,9 +31,9 @@ class CheckVoucherListener
     {
         $validate = $event->referensi;
         $voucher = Voucher::where('kode',$validate->referensi)->first();
-        $unixTimestamp = strtotime($voucher->tanggal_kadaluarsa);
 
         if($voucher){
+           $unixTimestamp = strtotime($voucher->tanggal_kadaluarsa);
            if($voucher->status == 1 && time()<$unixTimestamp){
 //            dd("valid");
             $voucher->status = 0;
