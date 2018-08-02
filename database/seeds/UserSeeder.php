@@ -39,6 +39,18 @@ class UserSeeder extends Seeder
             'owner_id' => $user->id
         ]);
 
+        $voucher = Voucher::create(
+        [
+            'kode' => 'JKL123',
+            'jenis' => 'diskon',
+            'syarat' => 'ada',
+            'status' => '1',
+            'tanggal_kadaluarsa' => '2018-08-22 13:44:27',
+            'logo_voucher' => 'path/gambar/JKL',
+            'logo_qr' => 'path/qr/JKL',
+            'owner_id' => $user->id
+        ]);
+
         $pemilik = Kepemilikan::create([
             'tanggal' => '2018-08-22 13:44:27',
             'pemilik' => $voucher->owner_id,

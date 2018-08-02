@@ -10,7 +10,7 @@ class Penempatan extends Model
 	public $table = "Penempatan";
 	use SoftDeletes;
 	protected $dates = ['deleted_at'];
-    protected $fillable = ['nomor','tanggal'];
+    protected $fillable = ['posisi','tanggal_mulai','tanggal_berakhir','karyawan_id'];
 
     public function penempatan(){
     	return $this->belongsTo('Thunderlabid\Manajemen\Models\Karyawan', 'karyawan_id');
