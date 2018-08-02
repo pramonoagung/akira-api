@@ -10,10 +10,10 @@ class Karyawan extends Model
 	public $table = "Karyawan";
 	use SoftDeletes;
 	protected $dates = ['deleted_at'];
-    protected $fillable = ['nomor','tanggal'];
+    protected $fillable = ['uuid','nip','nama'];
 
     public function penempatan(){
-        return $this->hasMany('Thunderlabid\Manajemen\Models\Karyawan', 'karyawan_id');
+        return $this->hasMany('Thunderlabid\Manajemen\Models\Penempatan', 'karyawan_id');
     }
 
 }

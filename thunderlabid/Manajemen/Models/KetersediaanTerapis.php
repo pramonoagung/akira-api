@@ -10,7 +10,7 @@ class KetersediaanTerapis extends Model
 	public $table = "Ketersediaan_Terapis";
 	use SoftDeletes;
 	protected $dates = ['deleted_at'];
-    protected $fillable = ['nomor','tanggal'];
+    protected $fillable = ['hari','jam_mulai','jam_akhir','penempatan_id'];
 
     
     public function penempatanketersediaan(){
