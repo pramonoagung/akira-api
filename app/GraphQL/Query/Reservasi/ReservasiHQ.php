@@ -33,6 +33,8 @@ class ReservasiHQ extends Query
     {
         if(isset($args['id'])) {
             return ReservasiHeader::where('id' ,$args['id'])->get();
+        }elseif(isset($args['tamu'])){
+            return ReservasiHeader::where('tamu' ,$args['tamu'])->get();
         }else {
             return ReservasiHeader::all();
         }

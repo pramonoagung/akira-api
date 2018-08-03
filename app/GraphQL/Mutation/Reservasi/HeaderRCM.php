@@ -6,6 +6,7 @@ use Folklore\GraphQL\Support\Mutation;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use GraphQL;
+use Illuminate\Support\Facades\DB;
 use Thunderlabid\Reservasi\Models\ReservasiHeader as RH;
 use Thunderlabid\Reservasi\Models\ReservasiDetail as RD;
 use Thunderlabid\Reservasi\Models\ReservasiStatus as RS;
@@ -39,6 +40,7 @@ class HeaderRCM extends Mutation
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
         try{
+            DB::beginTransaction();
             $header = new RH;
             $detail = new RD;
             $status = new RS;
@@ -48,23 +50,25 @@ class HeaderRCM extends Mutation
             $header->save();
             
             $detail->durasi = $args['durasi'];
+            $detail->produk = $args['produk'];
+            $detail->terapis = $args['terapis'];
             $detail->header_reservasi_id = $header->id;
             $detail->save();
             
             $status->tanggal = $args['tanggal'];
             $status->status = $args['status'];
+            $status->status = 'Diproses';
             $status->header_reservasi_id = $header->id;
             $status->save();
+            DB::Commit();
+            return $header;
         }catch(\Exception $e){
-            dd($e);
-        }
-        
-        return $header;
-        
+            DB::Rollback();
+        }        
     }
     
     private function getKode()
     {
-        return str_random(191);
+        return str_random(30);
     }
 }
