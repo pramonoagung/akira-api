@@ -17,6 +17,7 @@ class CreateVoucherTable extends Migration
             $table->increments('id');
             $table->string('kode');
             $table->string('jenis');
+            $table->integer('jumlah');
             $table->text('syarat');
             $table->boolean('status');
             $table->timestamp('tanggal_pemakaian')->nullableTimestamps();

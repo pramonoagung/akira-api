@@ -2,20 +2,18 @@
 
 namespace App\Events;
 
-use Thunderlabid\Pembayaran\Models\Pembayaran;
-
 class CheckVoucherEvent extends Event
 {
-    public $referensi;
+    public $kode;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(Pembayaran $referensi)
+    public function __construct(String $kode)
     {
         //dd('here');
-        $this->referensi = $referensi;
+        $this->kode = $kode;
         
     }
  
