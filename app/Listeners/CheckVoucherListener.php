@@ -5,7 +5,6 @@ namespace App\Listeners;
 use App\Events\CheckVoucherEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Thunderlabid\Pembayaran\Models\Pembayaran;
 use Thunderlabid\Voucher\Models\Voucher;
 
 class CheckVoucherListener
@@ -16,7 +15,7 @@ class CheckVoucherListener
      * @return void
      */
 
-    public function __construct(Pembayaran $referensi)
+    public function __construct(Voucher $kode)
     {
         
     }
@@ -29,25 +28,32 @@ class CheckVoucherListener
      */
     public function handle(CheckVoucherEvent $event)
     {
-        $validate = $event->referensi;
-        $voucher = Voucher::where('kode',$validate->referensi)->first();
-
+        // dd('a');
+        // $validate = $event->kode;
+        $voucher = Voucher::where('kode',$event->kode)->first();
+        
         if($voucher){
+            // dd('ada');
            $unixTimestamp = strtotime($voucher->tanggal_kadaluarsa);
            if($voucher->status == 1 && time()<$unixTimestamp){
 //            dd("valid");
+            $nominal = $voucher->jumlah;
+            // dd($nominal);
             $voucher->status = 0;
             $voucher->save();
-            return true;
+            return $nominal;
            }else
            {
-            dd("Voucher telah dipakai / hangus");
+            $nominal = 0;
+            // dd('Voucher Hangus');
+            return $nominal;
            }
 
         }else
         {
-            dd("Voucher tidak ada");
-            return false;
+            // dd('Voucher Tidak ada');
+            $nominal = 0;
+            return $nominal;
         }
         //dd('listener');
 

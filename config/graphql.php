@@ -145,6 +145,7 @@ return [
 				'KetersediaanTerapisQuery'		=> App\GraphQL\Query\Manajemen\KetersediaanTerapisQuery::class,
 				'PenempatanQuery'		=> App\GraphQL\Query\Manajemen\PenempatanQuery::class,
 				'WorkshiftQuery'		=> App\GraphQL\Query\Manajemen\WorkshiftQuery::class,
+				'CheckVoucherQuery'	=> App\GraphQL\Query\Voucher\CheckVoucherQuery::class,
 			],
 			'mutation' => [
 				/*
@@ -291,6 +292,7 @@ return [
 		App\GraphQL\Type\Pembayaran\PembayaranType::class,
 		App\GraphQL\Type\Voucher\KepemilikanType::class,
 		App\GraphQL\Type\Voucher\VoucherType::class,
+		App\GraphQL\Type\Voucher\CheckVoucherType::class,
 		App\GraphQL\Type\Produk\ProdukT::class,
 		App\GraphQL\Type\Terapis\TerapisT::class,
 		App\GraphQL\Type\Terapis\CekTerapisT::class,

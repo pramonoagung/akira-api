@@ -24,6 +24,7 @@ class VoucherQuery extends Query
 			'kode' => ['name' => 'kode', 'type' => Type::string()],
 			'jenis' => ['name' => 'jenis', 'type' => Type::string()],
 			'syarat' => ['name' => 'syarat', 'type' => Type::string()],
+			'jumlah' => ['name' => 'jumlah', 'type' => Type::string()],
 			'logo_voucher' => ['name' => 'logo_voucher', 'type' => Type::string()],
 			'logo_qr' => ['name' => 'logo_qr', 'type' => Type::string()],
 			'tanggal_kadaluarsa' => ['name' => 'tanggal_kadaluarsa', 'type' => Type::string()],
@@ -32,6 +33,7 @@ class VoucherQuery extends Query
 	}
 	public function resolve($root, $args)
 	{
+
 		if (isset($args['id'])) {
 			return Voucher::where('id', $args['id'])->get();
 		}else if (isset($args['kode'])) {

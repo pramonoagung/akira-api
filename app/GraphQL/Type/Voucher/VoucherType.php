@@ -29,6 +29,10 @@ class VoucherType extends GraphQLType
 				'type' => Type::string(),
 				'description' => 'Jenis Voucher'
 			],
+			'jumlah' => [
+				'type' => Type::int(),
+				'description' => 'jumlah Voucher'
+			],
 			'syarat' => [
 				'type' => Type::string(),
 				'description' => 'syarat Voucher'
