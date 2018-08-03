@@ -30,23 +30,11 @@ class CreatePembayaran extends Mutation
 	}
 	public function resolve($root, $args)
 	{
+		// dd('Tunai');
+		Pembayaran::create($args);
 
-		if(strtolower($args['jenis']) === 'voucher'){
-			// dd('Voucher');
-			$check = new Pembayaran($args);
-			$event = event(new CheckVoucherEvent($check));
-
-			if($event){
-				Pembayaran::create($args);
-
-				return Pembayaran::all();
-			}
-		}else{
-			// dd('Tunai');
-			Pembayaran::create($args);
-
-			return Pembayaran::all();
-		}
+		return Pembayaran::all();
+		
 		/*$voucher = Voucher::where('kode',$args['referensi'])->first();
 
         if($voucher) {
