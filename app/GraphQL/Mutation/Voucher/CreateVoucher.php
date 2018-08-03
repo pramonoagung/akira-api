@@ -20,10 +20,10 @@ class CreateVoucher extends Mutation
 	public function args()
 	{
 		return [
-			'kode' => ['name' => 'kode', 'type' => Type::string()],
-			'jenis' => ['name' => 'jenis', 'type' => Type::string()],
+			'kode' => ['name' => 'kode', 'type' => Type::nonNull(Type::string())],
+			'jenis' => ['name' => 'jenis', 'type' => Type::nonNull(Type::string())],
 			'syarat' => ['name' => 'syarat', 'type' => Type::string()],
-			'tanggal_kadaluarsa' => ['name' => 'tanggal_kadaluarsa', 'type' => Type::string()],
+			'tanggal_kadaluarsa' => ['name' => 'tanggal_kadaluarsa', 'type' => Type::nonNull(Type::string())],
 		];
 	}
 	public function resolve($root, $args)

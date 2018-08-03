@@ -16,18 +16,17 @@ class HeaderRCM extends Mutation
         'name' => 'HeaderRCM',
         'description' => 'A mutation'
     ];
-
+    
     public function type()
     {
         return GraphQL::type('ReservasiHT');
     }
-
+    
     public function args()
     {
         return [
             'tanggal_reservasi' => ['name' => 'tanggal_reservasi', 'type' => Type::string()],
             'tamu' => ['name' => 'tamu', 'type' => Type::string()],
-            'kode' => ['name' => 'kode', 'type' => Type::string()],
             'durasi' => ['name' => 'durasi', 'type' => Type::string()],
             'produk' => ['name' => 'produk', 'type' => Type::string()],
             'terapis' => ['name' => 'terapis', 'type' => Type::string()],
@@ -36,38 +35,36 @@ class HeaderRCM extends Mutation
             'progress' => ['name' => 'progress', 'type' => Type::string()],
         ];
     }
-
-     public function rules()
-    {
-        return [
-            'id' => ['required'],
-            'tanggal_reservasi' => ['required', 'tanggal_reservasi'],
-            'tamu' => ['required', 'tamu'],
-            'durasi' => ['required', 'durasi'],
-            'tanggal' => ['required', 'tanggal'],
-            'status' => ['required', 'status']
-        ];
-    }
-
+    
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
+        try{
+            $header = new RH;
+            $detail = new RD;
+            $status = new RS;
+            $header->tanggal_reservasi = $args['tanggal_reservasi'];
+            $header->tamu = $args['tamu'];
+            $header->kode = $this->getKode();
+            $header->save();
+            
+            $detail->durasi = $args['durasi'];
+            $detail->header_reservasi_id = $header->id;
+            $detail->save();
+            
+            $status->tanggal = $args['tanggal'];
+            $status->status = $args['status'];
+            $status->header_reservasi_id = $header->id;
+            $status->save();
+        }catch(\Exception $e){
+            dd($e);
+        }
         
-        //Find the user id [WIP]
-        $header = new RH;
-        $detail = new RD;
-        $status = new RS;
-        $header->tanggal_reservasi = $args['tanggal_reservasi'];
-        $header->tamu = $args['tamu'];
-        $header->kode = $this->geKode();
-        $detail->durasi = $args['durasi'];
-        $status->tanggal = $args['tanggal'];
-        $status->status = $args['status'];
-        $header->detail_reservasi()->status_reservasi()->save();
         return $header;
-
+        
     }
-
-    private function getKode(){
+    
+    private function getKode()
+    {
         return str_random(191);
     }
 }

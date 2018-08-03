@@ -16,7 +16,7 @@ class CreateDetailReservasiTable extends Migration
         Schema::create('detail_reservasi', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('header_reservasi_id')->index();
-            $table->time('durasi');
+            $table->int('durasi');
             $table->text('produk')->nullable();
             $table->text('terapis')->nullable();
             $table->timestamps();
