@@ -42,7 +42,7 @@ class AddOrganization extends Mutation
 
     public function resolve($root, $args)
     {
-        $user   = User::username($args['owner'][0]['username'])->first();
+        $user   = User::username(Auth::user()->username)->first();
 
         if (!$user) {
             throw new \Exception("User not found", 999);
