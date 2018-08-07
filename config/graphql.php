@@ -190,6 +190,7 @@ return [
                 'CreateVoucher' => App\GraphQL\Mutation\Voucher\CreateVoucher::class,
                 'UpdateVoucher' => App\GraphQL\Mutation\Voucher\UpdateVoucher::class,
                 'DeleteVoucher' => App\GraphQL\Mutation\Voucher\DeleteVoucher::class,
+                'UpdateOwner' => App\GraphQL\Mutation\Voucher\UpdateOwner::class,
 
                 'CreateKepemilikan' => App\GraphQL\Mutation\Voucher\CreateKepemilikan::class,
                 'UpdateKepemilikan' => App\GraphQL\Mutation\Voucher\UpdateKepemilikan::class,
