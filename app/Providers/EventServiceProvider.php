@@ -21,5 +21,8 @@ class EventServiceProvider extends ServiceProvider
 		 'App\Events\CekProdukEvent' => [
             'App\Listeners\CekProdukListener',
         ],
+         'App\Events\AddLogKepemilikanEvent' => [
+            'App\Listeners\AddLogKepemilikanListener',
+        ],
     ];
 }

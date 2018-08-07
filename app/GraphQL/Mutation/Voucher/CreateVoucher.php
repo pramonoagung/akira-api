@@ -5,6 +5,7 @@ use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Mutation;
 use Thunderlabid\Voucher\Models\Voucher;
 use Illuminate\Support\Facades\DB;
+use Thunderlabid\Otorisasi\Models\User;
 use GraphQL\Type\Definition\ResolveInfo;
 /**
  * User Query
