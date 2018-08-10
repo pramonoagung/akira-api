@@ -29,11 +29,12 @@ class UpdateOwner extends Mutation
 	public function resolve($root, $args)
 	{
 
-		$event = event(new AddLogKepemilikanEvent($args['username'],$args['id']));
 		$user = User::where('username',$args['username'])->first();
 		// dd($user);
 
 		if($user){
+
+			$event = event(new AddLogKepemilikanEvent($args['username'],$args['id']));
 			$data = Voucher::find($args['id']);
 
 			$data->owner_id = $user->id;
@@ -43,7 +44,7 @@ class UpdateOwner extends Mutation
 		return $data;	
 		}else
 		{
-			dd('username not exist');
+			dd('Username not exist');
 		}
 		
 	}

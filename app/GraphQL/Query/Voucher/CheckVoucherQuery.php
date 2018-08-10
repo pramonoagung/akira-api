@@ -26,6 +26,7 @@ class CheckVoucherQuery extends Query
 			];
 	}
 	public function resolve($root, $args){
+		
 		$event = event(new CheckVoucherEvent($args['kode']));
 		// dd($event[0]);
 		if($event){
