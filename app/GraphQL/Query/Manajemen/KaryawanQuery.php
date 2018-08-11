@@ -23,7 +23,8 @@ class KaryawanQuery extends Query
 			'id' => ['name' => 'id', 'type' => Type::int()],
 			'uuid' => ['name' => 'uuid', 'type' => Type::string()],
 			'nip' => ['name' => 'nip', 'type' => Type::string()],
-			'nama' => ['name' => 'nama', 'type' => Type::string()]
+			'nama' => ['name' => 'nama', 'type' => Type::string()],
+			'rating' => ['name' => 'rating', 'type' => Type::string()]
 		];
 	}
 	public function resolve($root, $args)

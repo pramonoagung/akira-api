@@ -2,6 +2,7 @@
 namespace App\GraphQL\Type\Manajemen;
 use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Type as GraphQLType;
+use GraphQL;
 /**
  * User Type
  */
@@ -30,6 +31,24 @@ class WorkshiftType extends GraphQLType
 			'jam_akhir' => [
 				'type' => Type::string(),
 				'description' => 'jam_akhir'
+			],
+			'karyawan_id' => [
+				'args' => [
+					'id' =>[
+						'type' => Type::int(),
+						'description' => 'Header id',
+					],
+				],
+
+				'type' => GraphQL::type('PenempatanType'),
+				'description' => 'foreign header transaksi id',
+
+				'resolve' =>function($root,$args){
+					if(isset($args['id'])){
+						return $root->penempatanworkshift->where('karyawan_id',$args['id']);
+					}
+					return $root->penempatanworkshift;
+				}
 			]
 		];
 	}

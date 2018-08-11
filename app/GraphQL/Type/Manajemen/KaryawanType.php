@@ -32,6 +32,10 @@ class KaryawanType extends GraphQLType
 				'type' => Type::string(),
 				'description' => 'nama'
 			],
+			'rating' => [
+				'type' => Type::string(),
+				'description' => 'rating'
+			],
 			'penempatan' => [
 				'args' => [
 					'id' =>[
