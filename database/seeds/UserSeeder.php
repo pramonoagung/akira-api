@@ -35,8 +35,8 @@ class UserSeeder extends Seeder
             'status' => '1',
             'jumlah' => '100000',
             'tanggal_kadaluarsa' => '2018-08-22 13:44:27',
-            'logo_voucher' => 'path/gambar/asd',
-            'logo_qr' => 'path/qr/asd',
+            'logo_voucher' => 'http://www.reevolveclothing.com/wp-content/uploads/2018/05/simple-a-picture-of-pikachu-is-gun-shooting-detective-now-and-his-game-coming-to.jpg',
+            'logo_qr' => 'https://www.qrstuff.com/images/default_qrcode.png',
             'owner_id' => $user->id
         ]);
 
@@ -48,8 +48,8 @@ class UserSeeder extends Seeder
             'status' => '1',
             'jumlah' => '50000',
             'tanggal_kadaluarsa' => '2018-08-22 13:44:27',
-            'logo_voucher' => 'path/gambar/JKL',
-            'logo_qr' => 'path/qr/JKL',
+            'logo_voucher' => 'http://www.reevolveclothing.com/wp-content/uploads/2018/05/simple-a-picture-of-pikachu-is-gun-shooting-detective-now-and-his-game-coming-to.jpg',
+            'logo_qr' => 'https://www.qrstuff.com/images/default_qrcode.png',
             'owner_id' => $user->id
         ]);
 
