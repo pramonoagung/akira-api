@@ -5,15 +5,16 @@ namespace App\Events;
 class CekTerapisEvent extends Event
 {
 
-    public $cek;
+    public $hari, $tanggal, $jam;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(String $terapis)
+    public function __construct(String $hari, String $tanggal)
     {
-        $this->cek = $terapis;
+        $this->hari = $hari;
+        $this->tanggal = $tanggal;
     }
 }
