@@ -58,7 +58,7 @@ class CreateKaryawan extends Mutation
             $workshift->penempatan_id = $penempatan->id;
             $workshift->save();
 
-            $ketersediaanterapis->hari = "AKIRA-PUSAT";
+            $ketersediaanterapis->hari = "Senin";
             $ketersediaanterapis->jam_mulai = "08:00:00";
             $ketersediaanterapis->jam_akhir = "16:00:00";
             $ketersediaanterapis->penempatan_id = $penempatan->id;
