@@ -18,7 +18,6 @@ class CreateDetailReservasiTable extends Migration
             $table->unsignedInteger('header_reservasi_id')->index();
             $table->time('durasi');
             $table->text('produk')->nullable();
-            $table->text('terapis')->nullable();
             $table->unsignedInteger('karyawan_id')->index();
             $table->timestamps();
             $table->softDeletes();

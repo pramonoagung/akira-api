@@ -30,17 +30,15 @@ class HeaderRCM extends Mutation
             'tamu' => ['name' => 'tamu', 'type' => Type::string()],
             'durasi' => ['name' => 'durasi', 'type' => Type::string()],
             'produk' => ['name' => 'produk', 'type' => Type::string()],
-            'terapis' => ['name' => 'terapis', 'type' => Type::string()],
-            'tanggal' => ['name' => 'tanggal', 'type' => Type::string()],
-            'status' => ['name' => 'status', 'type' => Type::string()],
-            'progress' => ['name' => 'progress', 'type' => Type::string()],
+            'karyawan_id' => ['name' => 'karyawan_id', 'type' => Type::int()]
         ];
     }
     
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-        try{
-            DB::beginTransaction();
+
+        // try{
+        //     DB::beginTransaction();
             $header = new RH;
             $detail = new RD;
             $status = new RS;
@@ -51,20 +49,20 @@ class HeaderRCM extends Mutation
             
             $detail->durasi = $args['durasi'];
             $detail->produk = $args['produk'];
-            $detail->terapis = $args['terapis'];
+            $detail->karyawan_id = $args['karyawan_id'];
             $detail->header_reservasi_id = $header->id;
             $detail->save();
             
-            $status->tanggal = $args['tanggal'];
-            $status->status = $args['status'];
-            $status->status = 'Diproses';
+            $status->tanggal = date('m/d/Y h:i:s a', time());
+            $status->status = 'diterima';
             $status->header_reservasi_id = $header->id;
             $status->save();
-            DB::Commit();
+           // DB::Commit();
             return $header;
-        }catch(\Exception $e){
-            DB::Rollback();
-        }        
+        // }catch(\Exception $e){
+        //     dd(401);
+        //     DB::Rollback();
+        // }        
     }
     
     private function getKode()

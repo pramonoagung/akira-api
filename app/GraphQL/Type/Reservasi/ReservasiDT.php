@@ -25,8 +25,8 @@ class ReservasiDT extends BaseType
             'produk' => [
                 'type' => Type::string(),
             ],
-            'terapis' => [
-                'type' => Type::string(),
+            'karyawan_id' => [
+                'type' => Type::int(),
             ],
             'header_reservasi_id' => [
                 'type' => Type::int(),
