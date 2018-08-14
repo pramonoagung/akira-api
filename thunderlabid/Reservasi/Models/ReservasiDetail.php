@@ -21,4 +21,9 @@ class ReservasiDetail extends Model
     {
         return $this->belongsTo('Thunderlabid\Reservasi\Models\ReservasiHeader');
     }
+
+    public function karyawan()
+    {
+        return $this->belongsTo('Thunderlabid\Manajemen\Models\Karyawan');
+    }
 }

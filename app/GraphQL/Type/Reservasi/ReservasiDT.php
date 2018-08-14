@@ -26,7 +26,20 @@ class ReservasiDT extends BaseType
                 'type' => Type::string(),
             ],
             'karyawan_id' => [
-                'type' => Type::int(),
+                'args' => [
+                    'id' => [
+                        'type'        => Type::int(),
+                        'description' => 'id of header',
+                    ],
+                ],
+                'type' => GraphQL::type('KaryawanType'),
+                'description' => 'header description',
+                'resolve' => function ($root, $args) {
+                    if (isset($args['karyawan_id'])) {
+                        return  $root->karyawan->where('id', $args['karyawan_id'])->get();
+                    }
+                    return $root->karyawan;
+                }
             ],
             'header_reservasi_id' => [
                 'type' => Type::int(),
