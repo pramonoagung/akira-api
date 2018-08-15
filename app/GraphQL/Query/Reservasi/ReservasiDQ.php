@@ -24,8 +24,6 @@ class ReservasiDQ extends Query
     {
         return [
             'id' => ['name' => 'id', 'type' => Type::int()],
-            'durasi' => ['name' => 'durasi', 'type' => Type::string()],
-            'produk' => ['name' => 'produk', 'type' => Type::string()],
             'terapis' => ['name' => 'terapis', 'type' => Type::string()],
             'header_reservasi_id' => ['name' => 'header_reservasi_id', 'type' => Type::int()],
             'header_reservasi' => ['name' => 'header_reservasi', 'type' => Type::int()]

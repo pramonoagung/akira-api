@@ -29,6 +29,6 @@ class ReservasiDetail extends Model
 
     public function produk()
     {
-        return $this->hasMany('Thunderlabid\Produk\Models\Produk');
+        return $this->belongsTo('Thunderlabid\Produk\Models\Produk');
     }
 }

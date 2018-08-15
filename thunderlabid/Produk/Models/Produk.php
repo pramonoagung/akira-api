@@ -14,4 +14,9 @@ class Produk extends Model
     protected $fillable = [
         'nama', 'kode', 'waktu', 'harga', 'deskripsi'
     ];
+
+    public function produkcek()
+    {
+        return $this->belongsTo('Thunderlabid\Reservasi\Models\ReservasiDetail');
+    }
 }

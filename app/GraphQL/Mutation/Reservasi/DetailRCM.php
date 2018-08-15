@@ -25,8 +25,7 @@ class DetailRCM extends Mutation
     {
         return [
             'header_reservasi_id' => ['name' => 'header_reservasi_id', 'type' => Type::int()],
-            'durasi' => ['name' => 'durasi', 'type' => Type::string()],
-            'produk' => ['name' => 'produk', 'type' => Type::string()],
+            'produk_id' => ['name' => 'produk_id', 'type' => Type::int()],
             'karyawan_id' => ['name' => 'karyawan_id', 'type' => Type::int()],
         ];
     }
@@ -37,8 +36,7 @@ class DetailRCM extends Mutation
             DB::beginTransaction();
             $detail = new RD;
             $detail->header_reservasi_id = $args['header_reservasi_id'];
-            $detail->durasi = $args['durasi'];
-            $detail->produk = $args['produk'];
+            $detail->produk_id = $args['produk_id'];
             $detail->karyawan_id = $args['karyawan_id'];
             $detail->save();
            DB::Commit();

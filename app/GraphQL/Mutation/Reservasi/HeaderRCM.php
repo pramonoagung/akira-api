@@ -28,8 +28,7 @@ class HeaderRCM extends Mutation
         return [
             'tanggal_reservasi' => ['name' => 'tanggal_reservasi', 'type' => Type::string()],
             'tamu' => ['name' => 'tamu', 'type' => Type::string()],
-            'durasi' => ['name' => 'durasi', 'type' => Type::string()],
-            'produk' => ['name' => 'produk', 'type' => Type::string()],
+            'produk_id' => ['name' => 'produk_id', 'type' => Type::int()],
             'karyawan_id' => ['name' => 'karyawan_id', 'type' => Type::int()]
         ];
     }
@@ -52,8 +51,7 @@ class HeaderRCM extends Mutation
             $header->kode = date('ymd')."RH".$inc;
             $header->save();
             
-            $detail->durasi = $args['durasi'];
-            $detail->produk = $args['produk'];
+            $detail->produk_id = $args['produk_id'];
             $detail->karyawan_id = $args['karyawan_id'];
             $detail->header_reservasi_id = $header->id;
             $detail->save();

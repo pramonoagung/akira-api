@@ -33,7 +33,7 @@ class CheckVoucherQuery extends Query
 			return ['kode'=>'','jumlah'=>$event[0]];
 		}else
 		{
-			dd('false');
+			throw new \Exception("Voucher not Exists", 999);
 		}
 			
 			
