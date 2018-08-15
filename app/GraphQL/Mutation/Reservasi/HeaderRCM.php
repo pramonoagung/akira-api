@@ -46,6 +46,11 @@ class HeaderRCM extends Mutation
             $header->tamu = $args['tamu'];
             $header->kode = $this->getKode();
             $header->save();
+
+            $inc = 100000 + $header->id;
+
+            $header->kode = date('ymd')."RH".$inc;
+            $header->save();
             
             $detail->durasi = $args['durasi'];
             $detail->produk = $args['produk'];

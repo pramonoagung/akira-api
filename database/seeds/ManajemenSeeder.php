@@ -21,7 +21,7 @@ class ManajemenSeeder extends Seeder
         //Karyawan 1
         $karyawan = Karyawan::create([
             'uuid' => '1888',
-            'nip' => '1111',
+            'nip' => '1000000',
             'nama' => 'Tom'
         ]);
 
@@ -53,7 +53,7 @@ class ManajemenSeeder extends Seeder
         //Karyawan 2
         $karyawan = Karyawan::create([
             'uuid' => '1888',
-            'nip' => '1111',
+            'nip' => '1000001',
             'nama' => 'Jerry'
         ]);
 

@@ -23,7 +23,6 @@ class CreateVoucherTable extends Migration
             $table->timestamp('tanggal_pemakaian')->nullableTimestamps();
             $table->dateTime('tanggal_kadaluarsa');
             $table->string('logo_voucher');
-            $table->string('logo_qr');
             $table->softDeletes();
             $table->timestamps();
             $table->unsignedInteger('owner_id')->index();

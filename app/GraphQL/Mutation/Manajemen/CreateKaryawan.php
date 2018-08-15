@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace App\GraphQL\Mutation\Manajemen;
 use GraphQL;
 use GraphQL\Type\Definition\Type;
@@ -25,8 +25,6 @@ class CreateKaryawan extends Mutation
 	public function args()
 	{
 		return [
-			'uuid' => ['name' => 'uuid', 'type' => Type::string()],
-			'nip' => ['name' => 'nip', 'type' => Type::string()],
 			'nama' => ['name' => 'nama', 'type' => Type::string()]
 		];
 	}
@@ -36,14 +34,15 @@ class CreateKaryawan extends Mutation
 		// dd('here');
 		try{
 			// dd(date('y-m-d h:i:s'));
+
             DB::beginTransaction();
             $karyawan = new Karyawan;
             $penempatan = new Penempatan;
             $workshift = new Workshift;
             $ketersediaanterapis = new KetersediaanTerapis;
-            $karyawan->uuid = $args['uuid'];
-            $karyawan->nip = $args['nip'];
             $karyawan->nama = $args['nama'];
+            $karyawan->save();
+            $karyawan->nip = 1000000 + $karyawan->id;
             $karyawan->save();
             
             $penempatan->posisi = "AKIRA-PUSAT";
@@ -52,17 +51,24 @@ class CreateKaryawan extends Mutation
             $penempatan->karyawan_id = $karyawan->id;
             $penempatan->save();
 
-            $workshift->hari = "Senin";
-            $workshift->jam_mulai = "08:00:00";
-            $workshift->jam_akhir = "16:00:00";
-            $workshift->penempatan_id = $penempatan->id;
-            $workshift->save();
+            $hari = ['senin', 'selasa', 'rabu', 'kamis', 'jumat'];
+            foreach($hari as $item){
+                  $workshift = Workshift::create([
+                      'hari' => $item,
+                      'jam_mulai' => '08:00:00',
+                      'jam_akhir' => '16:00:00',
+                      'penempatan_id' =>$penempatan->id
+                  ]);
+            }
 
-            $ketersediaanterapis->hari = "Senin";
-            $ketersediaanterapis->jam_mulai = "08:00:00";
-            $ketersediaanterapis->jam_akhir = "16:00:00";
-            $ketersediaanterapis->penempatan_id = $penempatan->id;
-            $ketersediaanterapis->save();
+            foreach($hari as $item){
+                  $ketersediaanterapis = KetersediaanTerapis::create([
+                      'hari' => $item,
+                      'jam_mulai' => '08:00:00',
+                      'jam_akhir' => '16:00:00',
+                      'penempatan_id' =>$penempatan->id
+                  ]);
+            }
             
             DB::Commit();
             return $karyawan;
