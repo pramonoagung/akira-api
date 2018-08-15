@@ -46,7 +46,7 @@ class CreateHeader extends Mutation
 
             $header->nomor = date('ymd')."HT".$inc; 
             $header->save();
-            
+
             $pembayaran->jenis = $args['jenis'];
             $pembayaran->jumlah = $args['jumlah'];
             $pembayaran->referensi = $args['referensi'];
