@@ -160,6 +160,8 @@ return [
 				'AddScope'			=> App\GraphQL\Mutation\User\AddScope::class,
 				'RemoveScope'		=> App\GraphQL\Mutation\User\RemoveScope::class,
 				'Deactivate'		=> App\GraphQL\Mutation\User\Deactivate::class,
+				'resetPassword'		=> App\GraphQL\mutation\User\ResetPassword::class,
+				'forgetPassword'		=> App\GraphQL\mutation\User\ForgetPassword::class,
 				'createHeaderReservasi'	=> App\GraphQL\Mutation\Reservasi\HeaderRCM::class,
 				'updateHeaderReservasi'	=> App\GraphQL\Mutation\Reservasi\HeaderRUM::class,
 				'deleteHeaderReservasi'	=> App\GraphQL\Mutation\Reservasi\HeaderRDM::class,

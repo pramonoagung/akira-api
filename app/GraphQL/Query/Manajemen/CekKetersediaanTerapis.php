@@ -28,7 +28,7 @@ class CekKetersediaanTerapis extends Query
 		return [
 			'hari' => ['name' => 'hari', 'type' => Type::nonNull(Type::string())],
 			'tanggal' => ['name' => 'tanggal', 'type' => Type::nonNull(Type::string())],
-			'durasi' => ['name' => 'durasi', 'type' => Type::nonNull(Type::string())]
+			'jam_berakhir' => ['name' => 'jam_berakhir', 'type' => Type::nonNull(Type::string())]
 		];
 	}
 
