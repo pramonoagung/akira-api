@@ -34,6 +34,7 @@ class CekKetersediaanTerapis extends Query
 
 	public function resolve($root, $args)
 	{
+		
  		//1. cek siapa yang bertugas (KARYAWAN_ID)
 		$workshift = Penempatan::wherehas('workshift', function($q)use($args){$q->where('hari', $args['hari']);})->get(['karyawan_id']);
         $kid    = array_column($workshift->toarray(), 'karyawan_id');

@@ -12,7 +12,7 @@ class ReservasiDetail extends Model
     protected $table = "detail_reservasi";
 
     protected $fillable = [
-        'durasi', 'produk', 'terapis', 'header_reservasi_id'
+        'durasi', 'produk', 'terapis', 'header_reservasi_id','produk_id'
     ];
 
     protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
@@ -25,5 +25,10 @@ class ReservasiDetail extends Model
     public function karyawan()
     {
         return $this->belongsTo('Thunderlabid\Manajemen\Models\Karyawan');
+    }
+
+    public function produk()
+    {
+        return $this->hasMany('Thunderlabid\Produk\Models\Produk');
     }
 }

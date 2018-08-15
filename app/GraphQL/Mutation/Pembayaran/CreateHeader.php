@@ -25,7 +25,6 @@ class CreateHeader extends Mutation
 	public function args()
 	{
 		return [
-			'nomor' => ['name' => 'nomor', 'type' => Type::string()],
 			'tanggal' => ['name' => 'tanggal', 'type' => Type::string()],
 			'jenis' => ['name' => 'jenis', 'type' => Type::string()],
 			'jumlah' => ['name' => 'jumlah', 'type' => Type::string()],
@@ -39,10 +38,15 @@ class CreateHeader extends Mutation
             DB::beginTransaction();
             $header = new HeaderTransaksi;
             $pembayaran = new Pembayaran;
-            $header->nomor = $args['nomor'];
+            $header->nomor = 123;
             $header->tanggal = $args['tanggal'];
             $header->save();
-            
+
+            $inc = 100000 + $header->id;
+
+            $header->nomor = date('ymd')."HT".$inc; 
+            $header->save();
+
             $pembayaran->jenis = $args['jenis'];
             $pembayaran->jumlah = $args['jumlah'];
             $pembayaran->referensi = $args['referensi'];
