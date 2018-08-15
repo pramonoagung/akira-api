@@ -27,21 +27,22 @@ class CekKetersediaanTerapis extends Query
 	{
 		return [
 			'hari' => ['name' => 'hari', 'type' => Type::nonNull(Type::string())],
-			'tanggal' => ['name' => 'tanggal', 'type' => Type::nonNull(Type::string())]
+			'tanggal' => ['name' => 'tanggal', 'type' => Type::nonNull(Type::string())],
+			'durasi' => ['name' => 'durasi', 'type' => Type::nonNull(Type::string())]
 		];
 	}
 
 	public function resolve($root, $args)
 	{
  		//1. cek siapa yang bertugas (KARYAWAN_ID)
-        $workshift = Penempatan::wherehas('workshift', function($q)use($args){$q->where('hari', $args['hari']);})->get(['karyawan_id']);
+		$workshift = Penempatan::wherehas('workshift', function($q)use($args){$q->where('hari', $args['hari']);})->get(['karyawan_id']);
         $kid    = array_column($workshift->toarray(), 'karyawan_id');
         
-        //2. cek terapis yg ga da jadwal
+        //2. cek terapis yg ada jadwal
         $dr     = RD::wherehas('header_reservasi', function($q)use($args){$q->where('tanggal_reservasi', $args['tanggal']);})
-        ->whereIn('karyawan_id', $kid)->get(['karyawan_id']);
+		->whereIn('karyawan_id', $kid)->get(['karyawan_id']);
         $tid    = array_column($dr->toarray(), 'karyawan_id');
-        
+		
         ///->where('tanggal_reservasi', $event->tanggal)
         //intersection, range
         //3. fetch their names

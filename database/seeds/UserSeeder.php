@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-    	$user 	= User::create(['username' => '089654562911','nama'=> 'Farid' , 'password' => app('hash')->make('123123123')]);
+    	$user 	= User::create(['username' => '1','nama'=> 'Farid' , 'password' => app('hash')->make('a')]);
     	$tenant = Tenant::create(['nama' => 'AKIRA']);
 
     	$default= config()->get('otorisasi.owner.default');

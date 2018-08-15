@@ -37,8 +37,8 @@ class HeaderRCM extends Mutation
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
 
-        // try{
-        //     DB::beginTransaction();
+        try{
+            DB::beginTransaction();
             $header = new RH;
             $detail = new RD;
             $status = new RS;
@@ -57,12 +57,12 @@ class HeaderRCM extends Mutation
             $status->status = 'diterima';
             $status->header_reservasi_id = $header->id;
             $status->save();
-           // DB::Commit();
+           DB::Commit();
             return $header;
-        // }catch(\Exception $e){
-        //     dd(401);
-        //     DB::Rollback();
-        // }        
+        }catch(\Exception $e){
+            dd(401);
+            DB::Rollback();
+        }        
     }
     
     private function getKode()
