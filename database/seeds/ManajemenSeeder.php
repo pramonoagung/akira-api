@@ -96,10 +96,9 @@ class ManajemenSeeder extends Seeder
 
         $detail = RD::create([
             'header_reservasi_id' => $header->id,
-            'durasi' => '00:60:00',
-            'jam_berakhir' => "14:00:00",
-            'produk' => 'Totok Wajah',
-            'karyawan_id' => 1
+            'produk_id' => 1,
+            'karyawan_id' => 1,
+            'jam_berakhir' => "14:00:00"
         ]);
        
         $header = RH::create([
@@ -116,10 +115,9 @@ class ManajemenSeeder extends Seeder
 
         $detail = RD::create([
             'header_reservasi_id' => $header->id,
-            'durasi' => '00:60:00',
-            'jam_berakhir' => "14:00:00",
-            'produk' => 'Pijat Saraf',
-            'karyawan_id' => 2
+            'produk_id' => 4,
+            'karyawan_id' => 2,
+            'jam_berakhir' => "14:00:00"
         ]);
     }
 }
