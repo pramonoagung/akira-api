@@ -95,6 +95,7 @@ $app->register(Thunderlabid\Pembayaran\PembayaranServiceProvider::class);
 $app->register(Thunderlabid\Voucher\VoucherServiceProvider::class);
 $app->register(Folklore\GraphQL\LumenServiceProvider::class);
 $app->register(Thunderlabid\Manajemen\ManajemenServiceProvider::class);
+$app->register(Thunderlabid\About\AboutServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

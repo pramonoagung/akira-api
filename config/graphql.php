@@ -146,7 +146,8 @@ return [
 				'PenempatanQuery'		=> App\GraphQL\Query\Manajemen\PenempatanQuery::class,
 				'WorkshiftQuery'		=> App\GraphQL\Query\Manajemen\WorkshiftQuery::class,
 				'CheckVoucherQuery'	=> App\GraphQL\Query\Voucher\CheckVoucherQuery::class,
-				'CekKetersediaanTerapis'=> App\GraphQL\Query\Manajemen\CekKetersediaanTerapis::class
+				'CekKetersediaanTerapis'=> App\GraphQL\Query\Manajemen\CekKetersediaanTerapis::class,
+				'AboutQuery'=> App\GraphQL\Query\About\AboutQuery::class
 			],
 			'mutation' => [
 				/*
@@ -215,7 +216,10 @@ return [
 				'DeleteKaryawan' => App\GraphQL\Mutation\Manajemen\DeleteKaryawan::class,
 				'DeleteKetersediaanTerapis' => App\GraphQL\Mutation\Manajemen\DeleteKetersediaanTerapis::class,
 				'DeletePenempatan' => App\GraphQL\Mutation\Manajemen\DeletePenempatan::class,
-				'DeleteWorkshift' => App\GraphQL\Mutation\Manajemen\DeleteWorkshift::class
+				'DeleteWorkshift' => App\GraphQL\Mutation\Manajemen\DeleteWorkshift::class,
+
+
+				'UpdateAbout' => App\GraphQL\Mutation\About\UpdateAbout::class
 
 			],
 		],
@@ -305,7 +309,8 @@ return [
 		App\GraphQL\Type\Manajemen\KetersediaanTerapisType::class,
 		App\GraphQL\Type\Manajemen\PenempatanType::class,
 		App\GraphQL\Type\Manajemen\WorkshiftType::class,
-		App\GraphQL\Type\Manajemen\CekKetersediaanTerapisType::class
+		App\GraphQL\Type\Manajemen\CekKetersediaanTerapisType::class,
+		App\GraphQL\Type\About\AboutType::class
 	],
 
 	/*
