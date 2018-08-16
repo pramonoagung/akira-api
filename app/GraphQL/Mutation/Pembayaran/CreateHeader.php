@@ -8,6 +8,7 @@ use Thunderlabid\Pembayaran\Models\DetailTransaksi;
 use Thunderlabid\Pembayaran\Models\Pembayaran;
 use Thunderlabid\Reservasi\Models\ReservasiHeader;
 use Thunderlabid\Reservasi\Models\ReservasiDetail;
+use Thunderlabid\Reservasi\Models\ReservasiStatus;
 use Thunderlabid\Produk\Models\Produk;
 use GraphQL\Type\Definition\ResolveInfo;
 use Illuminate\Support\Facades\DB;
@@ -70,6 +71,11 @@ class CreateHeader extends Mutation
 	            $pembayaran->referensi = $args['referensi'];
 	            $pembayaran->id_header_transaksi = $header->id;
 	            $pembayaran->save();
+
+	            $status = ReservasiStatus::where('header_reservasi_id', $reservasi->id)->first();
+
+	            $status->progress = "Selesai";
+	            $status->save();
 	            
 	            DB::Commit();
 	            return $header;

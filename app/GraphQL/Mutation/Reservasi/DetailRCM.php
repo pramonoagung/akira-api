@@ -42,7 +42,7 @@ class DetailRCM extends Mutation
            DB::Commit();
             return $detail;
         }catch(\Exception $e){
-            dd(401);
+            // dd(401);
             DB::Rollback();
         }  
     }

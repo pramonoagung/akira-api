@@ -15,7 +15,7 @@ class TransaksiSeeder extends Seeder
     public function run()
     {
         $header = HeaderTransaksi::create([
-            'nomor' => '1008',
+            'nomor' => '180815HT100004',
             'tanggal' => '2018-07-18 13:44:27'
         ]);
 

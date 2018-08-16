@@ -27,7 +27,6 @@ class CreateVoucher extends Mutation
 			'jumlah' => ['name' => 'jumlah', 'type' => Type::string()],
 			'tanggal_kadaluarsa' => ['name' => 'tanggal_kadaluarsa', 'type' => Type::nonNull(Type::string())],
 			'logo_voucher' => ['name' => 'logo_voucher', 'type' => Type::string()],
-			'logo_qr' => ['name' => 'logo_qr', 'type' => Type::string()],
 		];
 	}
 	public function resolve($root, $args, $context, ResolveInfo $info)
@@ -43,6 +42,8 @@ class CreateVoucher extends Mutation
 	            $voucher = new Voucher;
 	            $voucher->kode = $args['kode'];
 	            $voucher->jumlah = $args['jumlah'];
+	            $voucher->jenis = "diskon";
+	            $voucher->syarat = "-";
 	            $voucher->tanggal_kadaluarsa = $args['tanggal_kadaluarsa'];
 	            $voucher->logo_voucher = $args['logo_voucher'];
 	            $voucher->status = 1;
