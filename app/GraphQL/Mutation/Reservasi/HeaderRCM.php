@@ -4,9 +4,9 @@ namespace App\GraphQL\Mutation\Reservasi;
 
 use Folklore\GraphQL\Support\Mutation;
 use GraphQL\Type\Definition\ResolveInfo;
+use Illuminate\Support\Facades\DB;
 use GraphQL\Type\Definition\Type;
 use GraphQL;
-use Illuminate\Support\Facades\DB;
 use Thunderlabid\Reservasi\Models\ReservasiHeader as RH;
 use Thunderlabid\Reservasi\Models\ReservasiDetail as RD;
 use Thunderlabid\Reservasi\Models\ReservasiStatus as RS;

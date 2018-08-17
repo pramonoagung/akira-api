@@ -174,6 +174,10 @@ return [
 				'createStatusReservasi'	=> App\GraphQL\Mutation\Reservasi\StatusRCM::class,
 				'updateStatusReservasi'	=> App\GraphQL\Mutation\Reservasi\StatusRUM::class,
 				'deleteStatusReservasi'	=> App\GraphQL\Mutation\Reservasi\StatusRDM::class,
+				'TerimaReservasi'	=> App\GraphQL\Mutation\Reservasi\TerimaReservasi::class,
+				'TolakReservasi'	=> App\GraphQL\Mutation\Reservasi\TolakReservasi::class,
+				'CheckinReservasi'	=> App\GraphQL\Mutation\Reservasi\CheckinReservasi::class,
+
 
 				'createDetailReservasi'	=> App\GraphQL\Mutation\Reservasi\DetailRCM::class,
 				'updateDetailReservasi'	=> App\GraphQL\Mutation\Reservasi\DetailRUM::class,
@@ -295,6 +299,9 @@ return [
 		App\GraphQL\Type\Reservasi\ReservasiDT::class,
 		App\GraphQL\Type\Reservasi\ReservasiHT::class,
 		App\GraphQL\Type\Reservasi\ReservasiST::class,
+		App\GraphQL\Type\Reservasi\TolakReservasiType::class,
+		App\GraphQL\Type\Reservasi\TerimaReservasiType::class,
+		App\GraphQL\Type\Reservasi\CheckinReservasiType::class,
 		App\GraphQL\Type\Pembayaran\DetailType::class,
 		App\GraphQL\Type\Pembayaran\HeaderType::class,
 		App\GraphQL\Type\Pembayaran\PembayaranType::class,
