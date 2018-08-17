@@ -57,7 +57,7 @@ class HeaderRCM extends Mutation
             $detail->save();
             
             $status->tanggal = date('m/d/Y h:i:s a', time());
-            $status->status = 'diterima';
+            $status->status = 'pending';
             $status->header_reservasi_id = $header->id;
             $status->save();
            DB::Commit();
