@@ -23,14 +23,30 @@ class BatalReservasi extends Mutation
     public function args()
     {
         return [
-            'id' => ['name' => 'id', 'type' => Type::int()]
+            'ref_id' => ['name' => 'ref_id', 'type' => Type::int()]
         ];
     }
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-        $reservasi = RD::find($args['id']);
-        $reservasi->delete();
-        return $reservasi;
+        $reservasi = ReservasiHeader::where('kode', $args['ref_id'])->first();
+        if($reservasi){
+            try{
+                
+                // dd($produk->nama);
+                DB::beginTransaction();
+                $status = ReservasiStatus::where('header_reservasi_id', $reservasi->id)->first();
+                $status->progress = "checkin";
+                $status->save();
+                
+                DB::Commit();
+                return $status;
+            }catch(\Exception $e){
+                DB::Rollback();
+            }
+        }else
+        {
+            throw new \Exception("Kode Reservasi not Exists", 999);
+        }
     }
 }

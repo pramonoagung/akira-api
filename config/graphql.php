@@ -310,6 +310,7 @@ return [
 		App\GraphQL\Type\Reservasi\TolakReservasiType::class,
 		App\GraphQL\Type\Reservasi\TerimaReservasiType::class,
 		App\GraphQL\Type\Reservasi\CheckinReservasiType::class,
+		App\GraphQL\Type\Reservasi\BatalReservasiType::class,
 		App\GraphQL\Type\Pembayaran\DetailType::class,
 		App\GraphQL\Type\Pembayaran\HeaderType::class,
 		App\GraphQL\Type\Pembayaran\PembayaranType::class,

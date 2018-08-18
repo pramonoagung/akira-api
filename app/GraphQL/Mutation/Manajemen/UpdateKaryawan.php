@@ -20,17 +20,13 @@ class UpdateKaryawan extends Mutation
 	public function args()
 	{
 		return [
-			'uuid' => ['name' => 'uuid', 'type' => Type::string()],
-			'nip' => ['name' => 'nip', 'type' => Type::string()],
+			'id' => ['name' => 'id', 'type' => Type::int()],
 			'nama' => ['name' => 'nama', 'type' => Type::string()]
 		];
 	}
 	public function resolve($root, $args)
 	{
 		$data = Karyawan::find($args['id']);
-
-		$data->uuid = $args['uuid'];
-		$data->nip = $args['nip'];
 		$data->nama = $args['nama'];
 
         $data->save();
