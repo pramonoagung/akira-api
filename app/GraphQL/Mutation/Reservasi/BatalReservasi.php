@@ -5,8 +5,10 @@ namespace App\GraphQL\Mutation\Reservasi;
 use Folklore\GraphQL\Support\Mutation;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
-use Thunderlabid\Reservasi\Models\ReservasiDetail as RD;
+use Thunderlabid\Reservasi\Models\ReservasiStatus;
+use Thunderlabid\Reservasi\Models\ReservasiHeader;
 use GraphQL;
+use DB;
 
 class BatalReservasi extends Mutation
 {
@@ -23,7 +25,7 @@ class BatalReservasi extends Mutation
     public function args()
     {
         return [
-            'ref_id' => ['name' => 'ref_id', 'type' => Type::int()]
+            'ref_id' => ['name' => 'ref_id', 'type' => Type::string()]
         ];
     }
 
@@ -32,11 +34,9 @@ class BatalReservasi extends Mutation
         $reservasi = ReservasiHeader::where('kode', $args['ref_id'])->first();
         if($reservasi){
             try{
-                
-                // dd($produk->nama);
                 DB::beginTransaction();
                 $status = ReservasiStatus::where('header_reservasi_id', $reservasi->id)->first();
-                $status->progress = "checkin";
+                $status->status = "batal";
                 $status->save();
                 
                 DB::Commit();

@@ -17,16 +17,16 @@ class ReservasiHT extends BaseType
     {
         return [
             'id' => [
-                'type' => Type::nonNull(Type::int()),
+                'type' => Type::int(),
             ],
             'tanggal_reservasi' => [
-                'type' => Type::nonNull(Type::string()),
+                'type' => Type::string(),
             ],
             'tamu' => [
-                'type' => Type::nonNull(Type::string()),
+                'type' => Type::string(),
             ],
             'kode' => [
-                'type' => Type::nonNull(Type::string()),
+                'type' => Type::string(),
             ],
             'detail_reservasi' => [
                 'args' => [
