@@ -26,7 +26,7 @@ class ReservasiHQ extends Query
             'id' => ['name' => 'id', 'type' => Type::int()],
             'kode' => ['name' => 'kode', 'type' => Type::string()],
             'tanggal_reservasi' => ['name' => 'tanggal_reservasi', 'type'=> Type::string()],
-            'tamu' => ['name' => 'tamu', 'type'=> Type::string()]
+            'username' => ['name' => 'username', 'type'=> Type::string()]
         ];
     }
 
@@ -34,7 +34,7 @@ class ReservasiHQ extends Query
     {
         if(isset($args['id'])) {
             return ReservasiHeader::where('id' ,$args['id'])->get();
-        }elseif(isset($args['tamu'])){
+        }elseif(isset($args['username'])){
             return ReservasiHeader::where('tamu' ,$args['tamu'])->get();
         }elseif(isset($args['kode'])){
             return ReservasiHeader::where('kode' ,$args['kode'])->get();
