@@ -24,7 +24,7 @@ class ResetPassword extends Mutation
     public function args()
     {
         return [
-            'id'            => ['name' => 'id',       'type' => Type::nonNull(Type::string())],
+            'username'            => ['name' => 'username',       'type' => Type::nonNull(Type::string())],
             'password'      => ['name' => 'password',       'type' => Type::nonNull(Type::string())],
             'new_password'      => ['name' => 'new_password',       'type' => Type::nonNull(Type::string())]
         ];
@@ -32,7 +32,7 @@ class ResetPassword extends Mutation
     
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-        $user = User::find($args['id']);
+        $user = User::where('username',$args['username'])->first();
         if(Hash::check($args['password'], $user->password)){
             $user->password = app('hash')->make($args['new_password']);
             $user->save();

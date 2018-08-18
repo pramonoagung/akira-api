@@ -140,13 +140,15 @@ return [
 				'produk'			=> App\GraphQL\Query\Produk\ProdukQ::class,
 				'cekProduk'			=> App\GraphQL\Query\Produk\CekProdukQ::class,
 				'terapis'			=> App\GraphQL\Query\Terapis\TerapisQ::class,
-				'cekTerapis'			=> App\GraphQL\Query\Terapis\CekTerapisQ::class,
+				'cekTerapis'		=> App\GraphQL\Query\Terapis\CekTerapisQ::class,
 				'KaryawanQuery'		=> App\GraphQL\Query\Manajemen\KaryawanQuery::class,
 				'KetersediaanTerapisQuery'		=> App\GraphQL\Query\Manajemen\KetersediaanTerapisQuery::class,
 				'PenempatanQuery'		=> App\GraphQL\Query\Manajemen\PenempatanQuery::class,
 				'WorkshiftQuery'		=> App\GraphQL\Query\Manajemen\WorkshiftQuery::class,
-				'CheckVoucherQuery'	=> App\GraphQL\Query\Voucher\CheckVoucherQuery::class,
-				'CekKetersediaanTerapis'=> App\GraphQL\Query\Manajemen\CekKetersediaanTerapis::class
+				'CheckVoucherQuery'		=> App\GraphQL\Query\Voucher\CheckVoucherQuery::class,
+				'CekKetersediaanTerapis'=> App\GraphQL\Query\Manajemen\CekKetersediaanTerapis::class,
+				'rating'				=> App\GraphQL\Query\Terapis\Rating::class
+
 			],
 			'mutation' => [
 				/*
@@ -161,10 +163,14 @@ return [
 				'RemoveScope'		=> App\GraphQL\Mutation\User\RemoveScope::class,
 				'Deactivate'		=> App\GraphQL\Mutation\User\Deactivate::class,
 				'resetPassword'		=> App\GraphQL\mutation\User\ResetPassword::class,
-				'forgetPassword'		=> App\GraphQL\mutation\User\ForgetPassword::class,
+				'changeProfile'		=> App\GraphQL\mutation\User\ChangeProfile::class,
+				'forgetPassword'	=> App\GraphQL\mutation\User\ForgetPassword::class,
+				'createRating'		=> App\GraphQL\mutation\Terapis\CreateRating::class,
+
 				'createHeaderReservasi'	=> App\GraphQL\Mutation\Reservasi\HeaderRCM::class,
 				'updateHeaderReservasi'	=> App\GraphQL\Mutation\Reservasi\HeaderRUM::class,
 				'deleteHeaderReservasi'	=> App\GraphQL\Mutation\Reservasi\HeaderRDM::class,
+				'batalReservasi'	=> App\GraphQL\Mutation\Reservasi\BatalReservasi::class,
 
 				'createTerapis'	=> App\GraphQL\Mutation\Terapis\TerapisCM::class,
 				'updateTerapis'	=> App\GraphQL\Mutation\Terapis\TerapisUM::class,
@@ -305,7 +311,8 @@ return [
 		App\GraphQL\Type\Manajemen\KetersediaanTerapisType::class,
 		App\GraphQL\Type\Manajemen\PenempatanType::class,
 		App\GraphQL\Type\Manajemen\WorkshiftType::class,
-		App\GraphQL\Type\Manajemen\CekKetersediaanTerapisType::class
+		App\GraphQL\Type\Manajemen\CekKetersediaanTerapisType::class,
+		App\GraphQL\Type\Terapis\Rating::class,
 	],
 
 	/*

@@ -93,4 +93,7 @@ class User extends Model
 	public function voucherlist(){
     	return $this->hasMany('Thunderlabid\Voucher\Models\Voucher','owner_id');
     }
+	public function rating(){
+    	return $this->hasMany('Thunderlabid\Terapis\Models\Rating','user_id');
+    }
 }
