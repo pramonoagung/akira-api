@@ -29,8 +29,24 @@ class ReservasiST extends BaseType
                 'type' => Type::string(),
             ],
             'header_reservasi_id' => [
-                'type' => Type::int(),
+                'args' => [
+                    'id' =>[
+                        'type' => Type::int(),
+                        'description' => 'Header id',
+                    ],
+                ],
+
+                'type' => GraphQL::type('ReservasiHT'),
+                'description' => 'foreign header transaksi id',
+
+                'resolve' =>function($root,$args){
+                    if(isset($args['id'])){
+                        return $root->header_reservasi->where('header_reservasi_id',$args['id']);
+                    }
+                    return $root->header_reservasi;
+                }
             ],
+
         ];
     }
 }

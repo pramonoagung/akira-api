@@ -1,6 +1,6 @@
 <?php
 
-namespace thunderlabid\Reservasi\Models;
+namespace Thunderlabid\Reservasi\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -19,6 +19,6 @@ class ReservasiStatus extends Model
 
     public function header_reservasi()
     {
-        return $this->belongsTo('thunderlabid\Reservasi\Models\ReservasiHeader', 'header_reservasi_id');
+        return $this->belongsTo('Thunderlabid\Reservasi\Models\ReservasiHeader', 'header_reservasi_id');
     }
 }

@@ -74,7 +74,7 @@ class CreateHeader extends Mutation
 
 	            $status = ReservasiStatus::where('header_reservasi_id', $reservasi->id)->first();
 
-	            $status->progress = "Selesai";
+	            $status->progress = "selesai";
 	            $status->save();
 	            
 	            DB::Commit();

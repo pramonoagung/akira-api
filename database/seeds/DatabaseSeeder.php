@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call('ProdukSeeder');
         $this->call('TerapisSeeder');
         $this->call('TransaksiSeeder');
-        $this->call('ManajemenSeeder');    
+        $this->call('ManajemenSeeder'); 
+        $this->call('AboutSeeder');   
     }
 }
