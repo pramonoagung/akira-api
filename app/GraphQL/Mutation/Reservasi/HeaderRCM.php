@@ -10,6 +10,7 @@ use GraphQL;
 use Thunderlabid\Reservasi\Models\ReservasiHeader as RH;
 use Thunderlabid\Reservasi\Models\ReservasiDetail as RD;
 use Thunderlabid\Reservasi\Models\ReservasiStatus as RS;
+use Thunderlabid\Otorisasi\Models\User;
 
 class HeaderRCM extends Mutation
 {
@@ -35,7 +36,7 @@ class HeaderRCM extends Mutation
     
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-
+        
         try{
             DB::beginTransaction();
             $header = new RH;

@@ -35,7 +35,7 @@ class ReservasiHQ extends Query
         if(isset($args['id'])) {
             return ReservasiHeader::where('id' ,$args['id'])->get();
         }elseif(isset($args['username'])){
-            return ReservasiHeader::where('tamu' ,$args['tamu'])->get();
+            return ReservasiHeader::where('tamu' ,$args['username'])->get();
         }elseif(isset($args['kode'])){
             return ReservasiHeader::where('kode' ,$args['kode'])->get();
         }else {
