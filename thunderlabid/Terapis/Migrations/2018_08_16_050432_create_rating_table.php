@@ -19,6 +19,7 @@ class CreateRatingTable extends Migration
             $table->unsignedInteger('user_id')->index();
             $table->float('rating');
             $table->text('komentar');
+            $table->boolean('status')->default(false);
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('karyawan_id')->references('id')->on('karyawan')->onDelete('cascade');

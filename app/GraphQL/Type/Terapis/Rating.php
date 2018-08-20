@@ -31,6 +31,9 @@ class Rating extends BaseType
             'komentar' => [
                 'type' => Type::string(),
             ],
+            'status' => [
+                'type' => Type::string(),
+            ],
             
         ];
     }

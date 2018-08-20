@@ -36,6 +36,7 @@ class BatalReservasi extends Mutation
             try{
                 DB::beginTransaction();
                 $status = ReservasiStatus::where('header_reservasi_id', $reservasi->id)->first();
+                $status->tanggal = date('Y-m-d h:i:s', time());
                 $status->status = "batal";
                 $status->save();
                 

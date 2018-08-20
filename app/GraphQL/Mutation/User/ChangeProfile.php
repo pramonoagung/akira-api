@@ -23,7 +23,7 @@ class ChangeProfile extends Mutation
     public function args()
     {
         return [
-            'id'        => ['name' => 'id',       'type' => Type::string()],
+            'id'        => ['name' => 'id',       'type' => Type::int()],
             'username'  => ['name' => 'username',       'type' => Type::string()],
             'nama'      => ['name' => 'nama',       'type' => Type::string()]
         ];
