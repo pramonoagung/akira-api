@@ -26,12 +26,14 @@ class CreateRating extends Mutation
             'karyawan_id' => ['name'=> 'karyawan_id', 'type' => Type::nonNull(Type::int())],
             'user_id' => ['name'=> 'user_id', 'type' => Type::nonNull(Type::int())],
             'rating' => ['name'=> 'rating', 'type' => Type::nonNull(Type::int())],
-            'komentar' => ['name'=> 'komentar', 'type' => Type::string()]
+            'komentar' => ['name'=> 'komentar', 'type' => Type::string()],
+            'status' => ['name'=> 'komentar', 'type' => Type::string()]
         ];
     }
     
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
+        $args['status'] = true;
         $rating = new Rating;
         $rating->fill($args);
         $rating->save();
