@@ -23,15 +23,24 @@ class ChangeProfile extends Mutation
     public function args()
     {
         return [
-            'username'  => ['name' => 'username',       'type' => Type::nonNull(Type::string())],
-            'nama'      => ['name' => 'nama',       'type' => Type::nonNull(Type::string())]
+            'id'        => ['name' => 'id',       'type' => Type::string()],
+            'username'  => ['name' => 'username',       'type' => Type::string()],
+            'nama'      => ['name' => 'nama',       'type' => Type::string()]
         ];
     }
     
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-        $user = User::where('username', $args['username'])->first();
-        $user->nama = $args['nama'];
+        $user = User::find($args['id']);
+        if(isset($args['username']) && !isset($args['nama'])){
+            $user->username = $args['username'];
+        }
+        elseif(isset($args['nama']) && !isset($args['username'])){
+            $user->nama = $args['nama'];
+        }else{
+            $user->username = $args['username'];
+            $user->nama = $args['nama'];
+        }
         $user->save();
         return $user;
     }
