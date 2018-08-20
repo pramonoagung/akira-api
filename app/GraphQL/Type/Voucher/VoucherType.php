@@ -18,7 +18,7 @@ class VoucherType extends GraphQLType
 	{
 		return [
 			'id' => [
-				'type' => Type::string(),
+				'type' => Type::int(),
 				'description' => 'ID Voucher'
 			],
 			'kode' => [

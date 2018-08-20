@@ -21,16 +21,18 @@ class UsersQuery extends Query
     public function args()
     {
         return [
-            'id'  => ['name' => 'id', 'type' => Type::int()]
+            'id'  => ['name' => 'id', 'type' => Type::int()],
+            'username'  => ['name' => 'username', 'type' => Type::string()]
         ];
     }
 
     public function resolve($root, $args)
     {
         if (isset($args['id'])) {
-            //return User::username($args['username'])->get();
             return User::where('id',$args['id'])->get();
-        } else {
+        }elseif(isset($args['username'])) {
+            return User::where('username',$args['username'])->get();
+        }else {
             return User::all();
         }
     }

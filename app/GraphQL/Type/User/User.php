@@ -22,7 +22,7 @@ class User extends GraphQLType
 	public function fields()
 	{
 		return [
-			'id'			=>	[ 'type' 			=> Type::string()					],
+			'id'			=>	[ 'type' 			=> Type::int()					],
 			'nama'			=> 	[ 'type' 			=> Type::string()					],
 			'username'		=> 	[ 'type' 			=> Type::string()					],
 			'organizations'	=> 	[ 'type' 			=> Type::listOf(GraphQL::type('UserOrganization'))	],
