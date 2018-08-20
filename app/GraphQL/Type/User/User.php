@@ -25,6 +25,7 @@ class User extends GraphQLType
 			'id'			=>	[ 'type' 			=> Type::int()					],
 			'nama'			=> 	[ 'type' 			=> Type::string()					],
 			'username'		=> 	[ 'type' 			=> Type::string()					],
+			'jenis_kelamin'		=> 	[ 'type' 			=> Type::string()					],
 			'organizations'	=> 	[ 'type' 			=> Type::listOf(GraphQL::type('UserOrganization'))	],
 			'voucher' => [
 				'args' => [

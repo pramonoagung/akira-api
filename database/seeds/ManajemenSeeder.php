@@ -90,8 +90,8 @@ class ManajemenSeeder extends Seeder
         $status = RS::create([
             'header_reservasi_id' => $header->id,
             'tanggal' => '2018-07-18 13:00:00',
-            'status' => 'diterima',
-            'progress' => 'dikonfirmasi'
+            'status' => 'pending',
+            'progress' => 'diterima'
         ]);
 
         $detail = RD::create([
@@ -109,8 +109,8 @@ class ManajemenSeeder extends Seeder
         $status = RS::create([
             'header_reservasi_id' => $header->id,
             'tanggal' => '2018-07-18 13:00:00',
-            'status' => 'diterima',
-            'progress' => 'checkin'
+            'status' => 'pending',
+            'progress' => 'diterima'
         ]);
 
         $detail = RD::create([

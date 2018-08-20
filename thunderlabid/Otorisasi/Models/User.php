@@ -23,6 +23,7 @@ class User extends Model
 	protected $fillable         =   [
 										'username',
 										'password',
+										'jenis_kelamin'
 									];
 
 	protected $dates            =   [  

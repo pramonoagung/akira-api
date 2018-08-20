@@ -23,6 +23,7 @@ class AddUser extends Mutation
         return [
             'nama'      => ['name' => 'nama',       'type' => Type::string()],
             'username'  => ['name' => 'username',   'type' => Type::string()],
+            'jenis_kelamin'  => ['name' => 'jenis_kelamin',   'type' => Type::string()],
             'password'  => ['name' => 'password',   'type' => Type::string()]
         ];
     }
@@ -38,6 +39,7 @@ class AddUser extends Mutation
         $user   = new User;
         $user->username     = $args['username'];
         $user->nama         = $args['nama'];
+        $user->jenis_kelamin= $args['jenis_kelamin'];
         $user->password     = $args['password'];
         $user->save();
 
