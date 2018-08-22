@@ -8,6 +8,7 @@ use Thunderlabid\Manajemen\Models\Penempatan;
 use Thunderlabid\Manajemen\Models\Workshift;
 use Thunderlabid\Manajemen\Models\Karyawan;
 use Thunderlabid\Reservasi\Models\ReservasiDetail as RD;
+use Thunderlabid\Reservasi\Models\ReservasiStatus as RS;
 
 /**
  * User Query
@@ -39,11 +40,17 @@ class CekKetersediaanTerapis extends Query
 		$workshift = Penempatan::wherehas('workshift', function($q)use($args){$q->where('hari', $args['hari']);})->get(['karyawan_id']);
         $kid    = array_column($workshift->toarray(), 'karyawan_id');
         
+        // $status = RS::wherehas('header_reservasi', function($q){$q->where('status','konfirm');});        
+        // $sod = array_column($status->toarray(), 'header_reservasi_id');
+        // dd($sod);
+
+        // dd($kid);
         //2. cek terapis yg ada jadwal
         $dr     = RD::wherehas('header_reservasi', function($q)use($args){$q->where('tanggal_reservasi', $args['tanggal']);})
 		->whereIn('karyawan_id', $kid)->get(['karyawan_id']);
         $tid    = array_column($dr->toarray(), 'karyawan_id');
 		
+		// dd($tid);
         ///->where('tanggal_reservasi', $event->tanggal)
         //intersection, range
         //3. fetch their names

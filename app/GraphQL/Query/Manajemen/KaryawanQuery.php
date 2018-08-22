@@ -24,6 +24,7 @@ class KaryawanQuery extends Query
 			'uuid' => ['name' => 'uuid', 'type' => Type::string()],
 			'nip' => ['name' => 'nip', 'type' => Type::string()],
 			'nama' => ['name' => 'nama', 'type' => Type::string()],
+			'jenis_kelamin' => ['name' => 'jenis_kelamin', 'type' => Type::string()],
 			'rating' => ['name' => 'rating', 'type' => Type::string()]
 		];
 	}
@@ -37,6 +38,8 @@ class KaryawanQuery extends Query
 			return Karyawan::where('nip', $args['nip'])->get();
 		}elseif(isset($args['nama'])){
 			return Karyawan::where('nama', $args['nama'])->get();
+		}elseif(isset($args['jenis_kelamin'])){
+			return Karyawan::where('jenis_kelamin', $args['jenis_kelamin'])->get();
 		}else{
 			return Karyawan::all();
 		}

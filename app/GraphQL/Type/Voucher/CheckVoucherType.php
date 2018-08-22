@@ -18,10 +18,15 @@ class CheckVoucherType extends GraphQLType
 	{
 		return [
 			
+			'kode' => [
+				'type' => Type::string(),
+				'description' => 'jumlah Voucher'
+			],
 			'jumlah' => [
 				'type' => Type::int(),
 				'description' => 'jumlah Voucher'
 			],
+
 			
 		];
 	}

@@ -30,7 +30,7 @@ class CheckVoucherQuery extends Query
 		$event = event(new CheckVoucherEvent($args['kode']));
 		// dd($event[0]);
 		if($event){
-			return ['kode'=>'','jumlah'=>$event[0]];
+			return ['kode'=>$args['kode'],'jumlah'=>$event[0]];
 		}else
 		{
 			throw new \Exception("Voucher not Exists", 999);

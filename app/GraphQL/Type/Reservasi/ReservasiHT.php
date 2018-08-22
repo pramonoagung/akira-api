@@ -50,12 +50,18 @@ class ReservasiHT extends BaseType
                         'type'        => Type::int(),
                         'description' => 'id of status',
                     ],
+                    'progress' => [
+                        'type'        => Type::string(),
+                        'description' => 'id of status',
+                    ],
                 ],
                 'type' => Type::listOf(GraphQL::type('ReservasiST')),
                 'description' => 'status description',
                 'resolve' => function ($root, $args) {
                     if (isset($args['id'])) {
                         return  $root->status_reservasi->where('header_reservasi_id', $args['id']);
+                    }elseif (isset($args['progress'])) {
+                        return  $root->status_reservasi->where('progress', $args['progress']);
                     }
                     return $root->status_reservasi;
                 }
