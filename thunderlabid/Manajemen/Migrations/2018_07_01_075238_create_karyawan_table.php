@@ -18,6 +18,7 @@ class CreateKaryawanTable extends Migration
             $table->string('uuid');
             $table->string('nip');
             $table->string('nama');
+            $table->string('jenis_kelamin');
             $table->double('rating');
             $table->softDeletes();
             $table->timestamps();

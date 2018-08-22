@@ -21,13 +21,15 @@ class UpdateKaryawan extends Mutation
 	{
 		return [
 			'id' => ['name' => 'id', 'type' => Type::int()],
-			'nama' => ['name' => 'nama', 'type' => Type::string()]
+			'nama' => ['name' => 'nama', 'type' => Type::string()],
+			'jenis_kelamin' => ['name' => 'jenis_kelamin', 'type' => Type::string()]
 		];
 	}
 	public function resolve($root, $args)
 	{
 		$data = Karyawan::find($args['id']);
 		$data->nama = $args['nama'];
+		$data->jenis_kelamin = $args['jenis_kelamin'];
 
         $data->save();
 

@@ -25,7 +25,8 @@ class CreateKaryawan extends Mutation
 	public function args()
 	{
 		return [
-			'nama' => ['name' => 'nama', 'type' => Type::string()]
+			'nama' => ['name' => 'nama', 'type' => Type::string()],
+      'jenis_kelamin' => ['name' => 'jenis_kelamin', 'type' => Type::string()]
 		];
 	}
 
@@ -41,6 +42,7 @@ class CreateKaryawan extends Mutation
             $workshift = new Workshift;
             $ketersediaanterapis = new KetersediaanTerapis;
             $karyawan->nama = $args['nama'];
+            $karyawan->jenis_kelamin = $args['jenis_kelamin'];
             $karyawan->save();
             $karyawan->nip = 1000000 + $karyawan->id;
             $karyawan->save();

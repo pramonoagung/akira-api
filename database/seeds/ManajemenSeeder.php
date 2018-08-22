@@ -22,7 +22,8 @@ class ManajemenSeeder extends Seeder
         $karyawan = Karyawan::create([
             'uuid' => '1888',
             'nip' => '1000000',
-            'nama' => 'Tom'
+            'nama' => 'Tom',
+            'jenis_kelamin' => 'l'
         ]);
 
         $penempatan = Penempatan::create([
@@ -54,7 +55,8 @@ class ManajemenSeeder extends Seeder
         $karyawan = Karyawan::create([
             'uuid' => '1888',
             'nip' => '1000001',
-            'nama' => 'Jerry'
+            'nama' => 'Jerry',
+            'jenis_kelamin' => 'p'
         ]);
 
         $penempatan = Penempatan::create([

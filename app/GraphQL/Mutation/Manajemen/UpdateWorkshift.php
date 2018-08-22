@@ -20,6 +20,7 @@ class UpdateWorkshift extends Mutation
 	public function args()
 	{
 		return [
+			'id' => ['name' => 'id', 'type' => Type::int()],
 			'hari' => ['name' => 'hari', 'type' => Type::string()],
 			'jam_mulai' => ['name' => 'jam_mulai', 'type' => Type::string()],
 			'jam_akhir' => ['name' => 'jam_akhir', 'type' => Type::string()]
