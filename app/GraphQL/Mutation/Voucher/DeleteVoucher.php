@@ -26,9 +26,7 @@ class DeleteVoucher extends Mutation
 	public function resolve($root, $args)
 	{
 		$data = Voucher::find($args['id']);
-
 		$data->delete();
-
-		return Voucher::all();
+		return $data;
 	}
 }
