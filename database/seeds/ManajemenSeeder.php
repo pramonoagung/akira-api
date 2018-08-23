@@ -33,7 +33,7 @@ class ManajemenSeeder extends Seeder
             'karyawan_id' => $karyawan->id
         ]);
 
-        $hari = ['senin', 'selasa', 'rabu', 'kamis', 'jumat'];
+        $hari = ['senin', 'selasa', 'rabu', 'kamis', 'jumat','sabtu','minggu'];
         foreach($hari as $item){
             $workshift = Workshift::create([
                 'hari' => $item,
@@ -66,7 +66,7 @@ class ManajemenSeeder extends Seeder
             'karyawan_id' => $karyawan->id
         ]);
 
-        $works = ['senin', 'selasa', 'rabu', 'kamis', 'jumat'];
+        $works = ['senin', 'selasa', 'rabu', 'kamis', 'jumat','sabtu','minggu'];
         foreach($works as $item){
             $workshift = Workshift::create([
                 'hari' => $item,

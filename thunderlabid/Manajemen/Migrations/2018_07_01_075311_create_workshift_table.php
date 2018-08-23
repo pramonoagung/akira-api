@@ -18,6 +18,7 @@ class CreateWorkshiftTable extends Migration
             $table->string('hari');
             $table->time('jam_mulai');
             $table->time('jam_akhir');
+            $table->integer('flag')->default(1);
             $table->softDeletes();
             $table->timestamps();
             $table->integer('penempatan_id')->unsigned();
