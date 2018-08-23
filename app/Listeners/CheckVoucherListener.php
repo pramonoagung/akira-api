@@ -37,23 +37,38 @@ class CheckVoucherListener
            $unixTimestamp = strtotime($voucher->tanggal_kadaluarsa);
            if($voucher->status == 1 && time()<$unixTimestamp){
 //            dd("valid");
+            $array = [];
             $nominal = $voucher->jumlah;
+            $kode = $voucher->kode;
+            $array[0] = $nominal;
+            $array[1] = $kode;
             // dd($nominal);
             $voucher->status = 0;
             $voucher->save();
-            return $nominal;
+            return $array;
            }else
            {
+            $array = [];
             $nominal = 0;
+            $kode = "voucher hangus";
+
+            $array[0] = $nominal;
+            $array[1] = $kode;
             // dd('Voucher Hangus');
-            return $nominal;
+            return $array;
            }
 
         }else
         {
             // dd('Voucher Tidak ada');
+            $array = [];
             $nominal = 0;
-            return $nominal;
+            $kode = "voucher tidak valid";
+
+            $array[0] = $nominal;
+            $array[1] = $kode;
+            // dd('Voucher Hangus');
+            return $array;
         }
         //dd('listener');
 
