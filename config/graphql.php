@@ -225,6 +225,8 @@ return [
 				'UpdateKetersediaanTerapis' => App\GraphQL\Mutation\Manajemen\UpdateKetersediaanTerapis::class,
 				'UpdatePenempatan' => App\GraphQL\Mutation\Manajemen\UpdatePenempatan::class,
 				'UpdateWorkshift' => App\GraphQL\Mutation\Manajemen\UpdateWorkshift::class,
+				'EnableWorkshift' => App\GraphQL\Mutation\Manajemen\EnableWorkshift::class,
+				'DisableWorkshift' => App\GraphQL\Mutation\Manajemen\DisableWorkshift::class,
 
 				'DeleteKaryawan' => App\GraphQL\Mutation\Manajemen\DeleteKaryawan::class,
 				'DeleteKetersediaanTerapis' => App\GraphQL\Mutation\Manajemen\DeleteKetersediaanTerapis::class,

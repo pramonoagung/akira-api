@@ -35,7 +35,7 @@ class CreateVoucher extends Mutation
 			$cek   = Voucher::where('kode',$args['kode'])->first();
 
         	if($cek) {
-            	throw new \Exception("Voucher Exists", 999);
+            	return "Voucher Exist";
         	}else
 	        {
 	            DB::beginTransaction();

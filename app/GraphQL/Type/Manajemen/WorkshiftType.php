@@ -32,6 +32,10 @@ class WorkshiftType extends GraphQLType
 				'type' => Type::string(),
 				'description' => 'jam_akhir'
 			],
+			'flag' => [
+				'type' => Type::string(),
+				'description' => 'flag'
+			],
 			'karyawan_id' => [
 				'args' => [
 					'id' =>[
