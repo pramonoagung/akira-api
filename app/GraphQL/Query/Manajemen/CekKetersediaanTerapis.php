@@ -1,6 +1,6 @@
 <?php 
 namespace App\GraphQL\Query\Manajemen;
-use GraphQL;
+use GraphQL, DB;
 use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Query;
 use App\Events\CekTerapisEvent;
@@ -9,6 +9,7 @@ use Thunderlabid\Manajemen\Models\Workshift;
 use Thunderlabid\Manajemen\Models\Karyawan;
 use Thunderlabid\Reservasi\Models\ReservasiDetail as RD;
 use Thunderlabid\Reservasi\Models\ReservasiStatus as RS;
+use Thunderlabid\Reservasi\Models\ReservasiHeader as RH;
 
 /**
  * User Query
@@ -29,34 +30,37 @@ class CekKetersediaanTerapis extends Query
 		return [
 			'hari' => ['name' => 'hari', 'type' => Type::nonNull(Type::string())],
 			'tanggal' => ['name' => 'tanggal', 'type' => Type::nonNull(Type::string())],
-			'jam_berakhir' => ['name' => 'jam_berakhir', 'type' => Type::nonNull(Type::string())]
+			'jam_berakhir' => ['name' => 'jam_berakhir', 'type' => Type::nonNull(Type::string())],
+			'jk' => ['name' => 'jk', 'type' => Type::nonNull(Type::string())]
 		];
 	}
 
 	public function resolve($root, $args)
 	{
-		//Cek jenis kelamin
-		#code here
-
- 		//1. cek siapa yang bertugas (KARYAWAN_ID)
-		$workshift = Penempatan::wherehas('workshift', function($q)use($args){$q->where('hari', $args['hari']);})->get(['karyawan_id']);
-        $kid    = array_column($workshift->toarray(), 'karyawan_id');
-        
-        // $status = RS::wherehas('header_reservasi', function($q){$q->where('status','konfirm');});        
-        // $sod = array_column($status->toarray(), 'header_reservasi_id');
-        // dd($sod);
-
-        // dd($kid);
-        //2. cek terapis yg ada jadwal
-        $dr     = RD::wherehas('header_reservasi', function($q)use($args){$q->where('tanggal_reservasi', $args['tanggal']);})
-		->whereIn('karyawan_id', $kid)->get(['karyawan_id']);
-        $tid    = array_column($dr->toarray(), 'karyawan_id');
+		$waktuReservasi = date("H:i:s",strtotime($args['tanggal']));
+		$tanggalReservasi = date("Y-m-d",strtotime($args['tanggal']));
 		
-		// dd($tid);
-        ///->where('tanggal_reservasi', $event->tanggal)
-        //intersection, range
-        //3. fetch their names
-        $karyawan   = Karyawan::wherenotin('id', $tid)->get();
+		$tglWktSelesai = $tanggalReservasi.' '.$args['jam_berakhir'];
+		//1. cek siapa yang bertugas (KARYAWAN_ID)
+		//Cari yg flag = 1 dan hari = $args['hari]
+		$terapisId = Karyawan::where('jenis_kelamin', $args['jk'])->
+		wherehas('penempatan', function($q)use($args){$q->wherehas('workshift', function($v)use($args){$v->where('hari', $args['hari'])->where('flag',1);});})->get(['id']);
+		$kid    = array_column($terapisId->toarray(), 'id');
+		
+		//cocokin interval waktu tanggal dan waktu reservasi dengan resrvasi yang udah diterima
+		//trus ambil karyawan_id nya
+		$karyawanBertugas = DB::table('header_reservasi')
+			->join('status_reservasi', 'header_reservasi.id', '=', 'status_reservasi.header_reservasi_id')
+            ->join('detail_reservasi', 'header_reservasi.id', '=', 'detail_reservasi.header_reservasi_id')
+			->where('status_reservasi.status','=','diterima')
+			->where('status_reservasi.progress','!=','selesai')
+			->where('header_reservasi.tanggal_reservasi','>=',$args['tanggal'])
+			->where('header_reservasi.tanggal_reservasi','<=',$tglWktSelesai)
+            ->select('detail_reservasi.karyawan_id')
+			->get();
+		$tid    = array_column($karyawanBertugas->toarray(), 'karyawan_id');
+		
+	    $karyawan   = Karyawan::wherenotin('id', $tid)->get();
 		return $karyawan;
 	}
 

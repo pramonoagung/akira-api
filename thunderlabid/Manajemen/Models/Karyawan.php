@@ -15,9 +15,13 @@ class Karyawan extends Model
     public function penempatan(){
         return $this->hasMany('Thunderlabid\Manajemen\Models\Penempatan', 'karyawan_id');
 	}
+
     public function rating(){
         return $this->hasMany('Thunderlabid\Terapis\Models\Rating', 'karyawan_id');
 	}
 	
+	public function detail_reservasi(){
+		return $this->hasMany('Thunderlabid\Reservasi\Models\ReservasiDetail', 'detail_reservasi_id');
+	}
 
 }

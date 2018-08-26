@@ -24,5 +24,8 @@ class Penempatan extends Model
         return $this->hasMany('Thunderlabid\Manajemen\Models\ketersediaanTerapis', 'penempatan_id');
     }
 
+    public function karyawan(){
+        return $this->hasMany('Thunderlabid\Manajemen\Models\Karyawan', 'karyawan_id');
+    }
 
 }
