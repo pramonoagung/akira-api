@@ -60,7 +60,7 @@ class CekKetersediaanTerapis extends Query
 			->get();
 		$tid    = array_column($karyawanBertugas->toarray(), 'karyawan_id');
 		
-	    $karyawan   = Karyawan::wherenotin('id', $tid)->get();
+	    $karyawan   = Karyawan::wherenotin('id', $tid)->where('jenis_kelamin', $args['jk'])->get();
 		return $karyawan;
 	}
 
