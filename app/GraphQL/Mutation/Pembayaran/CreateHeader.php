@@ -33,7 +33,8 @@ class CreateHeader extends Mutation
 			'tanggal' => ['name' => 'tanggal', 'type' => Type::string()],
 			'jenis' => ['name' => 'jenis', 'type' => Type::string()],
 			'jumlah' => ['name' => 'jumlah', 'type' => Type::string()],
-			'referensi' => ['name' => 'referensi', 'type' => Type::string()]
+			'referensi' => ['name' => 'referensi', 'type' => Type::string()],
+			'diskon' => ['name' => 'diskon', 'type' => Type::string()]
 		];
 	}
 	public function resolve($root, $args, $context, ResolveInfo $info)
@@ -62,7 +63,7 @@ class CreateHeader extends Mutation
 	            $detail->produk = $produk->nama;
 	            $detail->kuantitas = 1;
 	            $detail->harga = $produk->harga;
-	            $detail->diskon = 0;
+	            $detail->diskon = $args['diskon'];
 	            $detail->id_header_transaksi = $header->id;
 	            $detail->save();
 
