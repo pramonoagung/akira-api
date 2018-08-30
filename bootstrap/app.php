@@ -22,7 +22,8 @@ try {
 $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
-
+class_alias(\LaravelFCM\Facades\FCM::class, 'FCM');
+class_alias(\LaravelFCM\Facades\FCMGroup::class, 'FCMGroup');
 $app->withFacades();
 
 $app->withEloquent();
@@ -81,7 +82,7 @@ $app->middleware([
 $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\AuthServiceProvider::class);
 $app->register(App\Providers\EventServiceProvider::class);
-
+$app->register(LaravelFCM\FCMServiceProvider::class);
 $app->singleton('filesystem', function ($app) { return $app->loadComponent('filesystems', 'Illuminate\Filesystem\FilesystemServiceProvider', 'filesystem'); });
 
 $app->configure('graphql');
@@ -96,6 +97,7 @@ $app->register(Thunderlabid\Voucher\VoucherServiceProvider::class);
 $app->register(Folklore\GraphQL\LumenServiceProvider::class);
 $app->register(Thunderlabid\Manajemen\ManajemenServiceProvider::class);
 $app->register(Thunderlabid\About\AboutServiceProvider::class);
+$app->register(Thunderlabid\Notifikasi\NotifikasiServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
