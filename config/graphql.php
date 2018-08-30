@@ -167,7 +167,8 @@ return [
 				'resetPassword'		=> App\GraphQL\mutation\User\ResetPassword::class,
 				'changeProfile'		=> App\GraphQL\mutation\User\ChangeProfile::class,
 				'forgetPassword'	=> App\GraphQL\mutation\User\ForgetPassword::class,
-				'createRating'		=> App\GraphQL\mutation\Terapis\CreateRating::class,
+				'pushnotif'			=> App\GraphQL\mutation\notifikasi\SendNotification::class,
+				'broadcast'			=> App\GraphQL\mutation\notifikasi\GlobalBroadcast::class,
 
 				'createHeaderReservasi'	=> App\GraphQL\Mutation\Reservasi\HeaderRCM::class,
 				'updateHeaderReservasi'	=> App\GraphQL\Mutation\Reservasi\HeaderRUM::class,
@@ -327,7 +328,8 @@ return [
 		App\GraphQL\Type\Manajemen\WorkshiftType::class,
 		App\GraphQL\Type\Manajemen\CekKetersediaanTerapisType::class,
 		App\GraphQL\Type\About\AboutType::class,
-		App\GraphQL\Type\Terapis\Rating::class
+		App\GraphQL\Type\Terapis\Rating::class,
+		App\GraphQL\Type\Notifikasi\Notifikasi::class
 	],
 
 	/*

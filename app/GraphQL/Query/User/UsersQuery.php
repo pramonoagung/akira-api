@@ -6,6 +6,7 @@ use GraphQL;
 use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Query;
 use Thunderlabid\Otorisasi\Models\User;
+use Thunderlabid\Otorisasi\Models\Scope;
 
 class UsersQuery extends Query
 {
@@ -22,7 +23,8 @@ class UsersQuery extends Query
     {
         return [
             'id'  => ['name' => 'id', 'type' => Type::int()],
-            'username'  => ['name' => 'username', 'type' => Type::string()]
+            'username'  => ['name' => 'username', 'type' => Type::string()],
+            'scope'  => ['name' => 'scope', 'type' => Type::string()]
         ];
     }
 
@@ -32,6 +34,10 @@ class UsersQuery extends Query
             return User::where('id',$args['id'])->get();
         }elseif(isset($args['username'])) {
             return User::where('username',$args['username'])->get();
+        }elseif(isset($args['scope'])) {
+            return User::wherehas('scopes', function($q)use($args){
+                $q->where('scope', 'admin');
+            })->get();
         }else {
             return User::all();
         }
