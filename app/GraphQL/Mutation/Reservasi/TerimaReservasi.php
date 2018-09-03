@@ -31,6 +31,7 @@ class TerimaReservasi extends Mutation
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
+        \Log::info($args['ref_id']);
         $reservasi = ReservasiHeader::where('kode', $args['ref_id'])->first();
         if($reservasi){
             try{
