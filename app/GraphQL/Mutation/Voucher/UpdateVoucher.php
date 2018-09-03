@@ -4,9 +4,10 @@ use GraphQL;
 use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Mutation;
 use Thunderlabid\Voucher\Models\Voucher;
+use Illuminate\Support\Facades\DB;
 /**
- * User Query
- */
+* User Query
+*/
 class UpdateVoucher extends Mutation
 {
 	
@@ -15,36 +16,38 @@ class UpdateVoucher extends Mutation
 	];
 	public function type()
 	{
-		return Type::listOf(GraphQL::type('VoucherType'));
+		return GraphQL::type('VoucherType');
 	}
 	public function args()
 	{
 		return [
 			'id' => ['name' => 'id', 'type' => Type::int()],
-			'kode' => ['name' => 'kode', 'type' => Type::nonNull(Type::string())],
-			'jenis' => ['name' => 'jenis', 'type' => Type::nonNull(Type::string())],
-			'jumlah' => ['name' => 'jumlah', 'type' => Type::string()],
+			'kode' => ['name' => 'kode', 'type' => Type::string()],
+			'jenis' => ['name' => 'jenis', 'type' => Type::string()],
+			'jumlah' => ['name' => 'jumlah', 'type' => Type::int()],
 			'syarat' => ['name' => 'syarat', 'type' => Type::string()],
-			'tanggal_kadaluarsa' => ['name' => 'tanggal_kadaluarsa', 'type' => Type::nonNull(Type::string())],
+			'tanggal_kadaluarsa' => ['name' => 'tanggal_kadaluarsa', 'type' => Type::string()],
 			'logo_voucher' => ['name' => 'logo_voucher', 'type' => Type::string()],
 			'logo_qr' => ['name' => 'logo_qr', 'type' => Type::string()],
 		];
 	}
 	public function resolve($root, $args)
 	{
-		$data = Voucher::find($args['id']);
-
-		$data->kode = $args['kode'];
-		$data->jenis = $args['jenis'];
-		$data->jumlah = $args['jumlah'];
-		$data->syarat = $args['syarat'];
-		$data->tanggal_kadaluarsa = $args['tanggal_kadaluarsa'];
-		$data->logo_voucher = $args['logo_voucher'];
-		$data->logo_qr = $args['logo_qr'];
-
-		
-        $data->save();
-
-		return Voucher::all();
+		$voucher = Voucher::findOrFail($args['id']);
+		try{
+			DB::BeginTransaction();
+			isset($args['kode'])?$voucher->kode = $args['kode']:'';
+			isset($args['jenis'])?$voucher->jenis = $args['jenis']:'';
+			isset($args['jumlah'])?$voucher->jumlah = $args['jumlah']:'';
+			isset($args['syarat'])?$voucher->syarat = $args['syarat']:'';
+			isset($args['tanggal_kadaluarsa'])?$voucher->tanggal_kadaluarsa = $args['tanggal_kadaluarsa']:'';
+			isset($args['logo_voucher'])?$voucher->logo_voucher = $args['logo_voucher']:'';
+			isset($args['logo_qr'])?$voucher->logo_qr = $args['logo_qr']:'';
+			$voucher->save();
+			DB::Commit(); 
+			return $voucher; 
+		}catch(Exception $e){
+			DB::Rollback();
+		}
 	}
 }
