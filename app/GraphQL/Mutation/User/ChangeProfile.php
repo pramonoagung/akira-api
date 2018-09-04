@@ -35,13 +35,12 @@ class ChangeProfile extends Mutation
         ];
     }
     
-    public function resolve($root, $args, $context, ResolveInfo $info)
-    {
+    public function resolve($root, $args, $context, ResolveInfo $info){
         $user = User::findOrFail($args['id']);
         if (!$user) {
             throw new \Exception("User Doesn't Exist", 999);
         }
-
+        
         if(isset($args['scope'])){
             return $this->updateAdmin($args,$user);
         }else{
@@ -51,7 +50,7 @@ class ChangeProfile extends Mutation
     
     private function updateAdmin($args, $user){
         $args['tenant']     = 'AKIRA';
-        try{
+        try {
             DB::BeginTransaction();
             isset($args['username'])? $user->username      = $args['username']:'';
             isset($args['nama'])    ? $user->nama          = $args['nama']:'';
@@ -67,6 +66,7 @@ class ChangeProfile extends Mutation
             DB::Rollback();
         }
     }
+    
     private function updateUser($args){
         try{
             DB::BeginTransaction();
@@ -81,5 +81,6 @@ class ChangeProfile extends Mutation
         }catch(\Exeption $e){
             DB::Rollback();
         }
-    }
+    }      
 }
+    

@@ -11,7 +11,8 @@ use Thunderlabid\Otorisasi\Models\User;
 class Deactivate extends Mutation
 {
     protected $attributes = [
-        'name' => 'Deactivate'
+        'name' => 'Deactivate',
+        'description' => 'A mutation'
     ];
 
     public function type()
