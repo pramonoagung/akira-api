@@ -5,7 +5,7 @@ namespace App\GraphQL\Mutation\User;
 use GraphQL;
 use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Mutation;
-
+use GraphQL\Type\Definition\ResolveInfo;
 use Thunderlabid\Otorisasi\Models\User;
 
 class Deactivate extends Mutation
