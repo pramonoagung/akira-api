@@ -24,8 +24,8 @@ class ResetPassword extends Mutation
     public function args()
     {
         return [
-            'username'            => ['name' => 'username',       'type' => Type::nonNull(Type::string())],
-            'password'      => ['name' => 'password',       'type' => Type::nonNull(Type::string())],
+            'username'          => ['name' => 'username',       'type' => Type::nonNull(Type::string())],
+            'password'          => ['name' => 'password',       'type' => Type::nonNull(Type::string())],
             'new_password'      => ['name' => 'new_password',       'type' => Type::nonNull(Type::string())]
         ];
     }

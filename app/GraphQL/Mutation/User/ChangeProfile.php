@@ -5,8 +5,10 @@ namespace App\GraphQL\Mutation\User;
 use Folklore\GraphQL\Support\Mutation;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
-use GraphQL;
+use GraphQL, DB;
 use Thunderlabid\Otorisasi\Models\User;
+use Thunderlabid\Otorisasi\Models\Scope;
+use Thunderlabid\Otorisasi\Models\Tenant;
 
 class ChangeProfile extends Mutation
 {
@@ -24,24 +26,60 @@ class ChangeProfile extends Mutation
     {
         return [
             'id'        => ['name' => 'id',       'type' => Type::int()],
-            'username'  => ['name' => 'username',       'type' => Type::string()],
-            'nama'      => ['name' => 'nama',       'type' => Type::string()]
+            'nama'      => ['name' => 'nama',       'type' => Type::string()],
+            'username'  => ['name' => 'username',   'type' => Type::string()],
+            'scope'     => ['name' => 'scope',   'type' => Type::string()],
+            'tenant'    => ['name' => 'tenant',   'type' => Type::string()],
+            'jk'        => ['name' => 'jk',   'type' => Type::string()],
+            'password'  => ['name' => 'password',   'type' => Type::string()]
         ];
     }
     
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-        $user = User::find($args['id']);
-        if(isset($args['username']) && !isset($args['nama'])){
-            $user->username = $args['username'];
+        $user = User::findOrFail($args['id']);
+        if (!$user) {
+            throw new \Exception("User Doesn't Exist", 999);
         }
-        elseif(isset($args['nama']) && !isset($args['username'])){
-            $user->nama = $args['nama'];
+
+        if(isset($args['scope'])){
+            return $this->updateAdmin($args,$user);
         }else{
-            $user->username = $args['username'];
-            $user->nama = $args['nama'];
+            return $this->updateUser($args);
         }
-        $user->save();
-        return $user;
+    }
+    
+    private function updateAdmin($args, $user){
+        $args['tenant']     = 'AKIRA';
+        try{
+            DB::BeginTransaction();
+            isset($args['username'])? $user->username      = $args['username']:'';
+            isset($args['nama'])    ? $user->nama          = $args['nama']:'';
+            $user->save();
+            
+            $scope = Scope::FindOrFail($user['id']);
+            isset($args['scope'])? $scope->scope = $args['scope']:'';
+            $scope->save();          
+            
+            DB::Commit();
+            return $user;
+        }catch(\Exeption $e){
+            DB::Rollback();
+        }
+    }
+    private function updateUser($args){
+        try{
+            DB::BeginTransaction();
+            $user   = new User;
+            $user->username     = $args['username'];
+            $user->nama         = $args['nama'];
+            $user->jenis_kelamin= $args['jk'];
+            $user->password     = app('hash')->make($args['password']);
+            $user->save();
+            DB::Commit();
+            return $user;
+        }catch(\Exeption $e){
+            DB::Rollback();
+        }
     }
 }
