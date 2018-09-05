@@ -26,6 +26,7 @@ class AddUser extends Mutation
             'nama'      => ['name' => 'nama',       'type' => Type::string()],
             'username'  => ['name' => 'username',   'type' => Type::string()],
             'scope'     => ['name' => 'scope',   'type' => Type::string()],
+            'token'     => ['name' => 'token',   'type' => Type::string()],
             'tenant'    => ['name' => 'tenant',   'type' => Type::string()],
             'jk'        => ['name' => 'jk',   'type' => Type::string()],
             'password'  => ['name' => 'password',   'type' => Type::string()]
@@ -79,6 +80,7 @@ class AddUser extends Mutation
             $user->username     = $args['username'];
             $user->nama         = $args['nama'];
             $user->jenis_kelamin= $args['jk'];
+            $user->device_reg_id= $args['token'];
             $user->password     = app('hash')->make($args['password']);
             $user->save();
             DB::Commit();

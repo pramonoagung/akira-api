@@ -19,6 +19,7 @@ class CreateUserTable extends Migration
             $table->string('username')->unique();
             $table->string('nama');
             $table->string('jenis_kelamin')->nullable();
+            $table->string('device_reg_id')->nullable();
 
             // Attr
             $table->string('password', 127);
