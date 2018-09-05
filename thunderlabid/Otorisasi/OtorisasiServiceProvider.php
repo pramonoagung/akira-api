@@ -37,6 +37,6 @@ class OtorisasiServiceProvider extends ServiceProvider
 	 */
 	public function register()
 	{
-		config()->set('otorisasi.owner.default', 'admin');
+		config()->set('otorisasi.owner.default', ['admin']);
 	}
 }

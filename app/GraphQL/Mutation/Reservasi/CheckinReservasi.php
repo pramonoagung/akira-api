@@ -7,6 +7,7 @@ use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 use Illuminate\Support\Facades\DB;
 use GraphQL;
+use Carbon\Carbon;
 use Thunderlabid\Reservasi\Models\ReservasiStatus;
 use Thunderlabid\Reservasi\Models\ReservasiHeader;
 
@@ -34,11 +35,10 @@ class CheckinReservasi extends Mutation
         $reservasi = ReservasiHeader::where('kode', $args['ref_id'])->first();
         if($reservasi){
             try{
-                
-                // dd($produk->nama);
                 DB::beginTransaction();
                 $status = ReservasiStatus::where('header_reservasi_id', $reservasi->id)->first();
                 $status->progress = "checkin";
+                $status->tanggal = \Carbon\Carbon::now()->toDateTimeString();
                 $status->save();
                 
                 DB::Commit();

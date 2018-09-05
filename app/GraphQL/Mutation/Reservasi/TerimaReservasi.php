@@ -36,11 +36,11 @@ class TerimaReservasi extends Mutation
         if($reservasi){
             try{
                 
-                // dd($produk->nama);
                 DB::beginTransaction();
                 $status = ReservasiStatus::where('header_reservasi_id', $reservasi->id)->first();
                 $status->status = "konfirm";
                 $status->progress = "konfirm";
+                $status->tanggal = \Carbon\Carbon::now()->toDateTimeString();
                 $status->save();
                 
                 DB::Commit();

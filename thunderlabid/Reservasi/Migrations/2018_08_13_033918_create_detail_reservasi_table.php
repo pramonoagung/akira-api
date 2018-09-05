@@ -22,8 +22,8 @@ class CreateDetailReservasiTable extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('header_reservasi_id')->references('id')->on('header_reservasi')->onDelete('cascade');
-            $table->foreign('karyawan_id')->references('id')->on('karyawan')->onDelete('cascade');
-            $table->foreign('produk_id')->references('id')->on('produk')->onDelete('cascade');
+            $table->foreign('karyawan_id')->references('id')->on('karyawan');
+            $table->foreign('produk_id')->references('id')->on('produk');
         });
     }
 

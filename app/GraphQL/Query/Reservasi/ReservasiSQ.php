@@ -38,7 +38,7 @@ class ReservasiSQ extends Query
         }elseif(isset($args['tanggal'])) {
             return RS::where('tanggal' ,$args['tanggal'])->get();
         }elseif(isset($args['status'])) {
-            return RS::where('status' ,$args['status'])->get();
+            return RS::where('status' ,$args['status'])->orderBy('created_at', 'desc')->get();
         }elseif(isset($args['progress'])) {
             return RS::where('progress' ,$args['progress'])->get();
         }else {

@@ -34,11 +34,10 @@ class TolakReservasi extends Mutation
         $reservasi = ReservasiHeader::where('kode', $args['ref_id'])->first();
         if($reservasi){
             try{
-                
-                // dd($produk->nama);
                 DB::beginTransaction();
                 $status = ReservasiStatus::where('header_reservasi_id', $reservasi->id)->first();
                 $status->status = "ditolak";
+                $status->tanggal = \Carbon\Carbon::now()->toDateTimeString();
                 $status->save();
                 
                 DB::Commit();
