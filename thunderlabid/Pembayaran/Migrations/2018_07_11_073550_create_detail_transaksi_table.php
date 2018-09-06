@@ -19,7 +19,7 @@ class CreateDetailTransaksiTable extends Migration
             $table->text('produk');
             $table->integer('kuantitas');
             $table->double('harga');
-            $table->double('diskon');
+            $table->double('diskon')->nullable();
             $table->softDeletes();
             $table->timestamps();
             $table->integer('id_header_transaksi')->unsigned();

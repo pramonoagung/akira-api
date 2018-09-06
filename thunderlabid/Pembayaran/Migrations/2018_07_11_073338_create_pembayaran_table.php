@@ -17,7 +17,7 @@ class CreatePembayaranTable extends Migration
             $table->increments('id');
             $table->string('jenis');
             $table->double('jumlah');
-            $table->text('referensi');
+            $table->text('referensi')->nullable();
             $table->softDeletes();
             $table->timestamps();
             $table->integer('id_header_transaksi')->unsigned();
