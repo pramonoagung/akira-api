@@ -35,6 +35,8 @@ class ReservasiSQ extends Query
     {
         if(isset($args['id'])) {
             return RS::where('id' ,$args['id'])->get();
+        }elseif(isset($args['header_reservasi_id'])) {
+            return RS::where('header_reservasi_id' ,$args['header_reservasi_id'])->get();
         }elseif(isset($args['tanggal'])) {
             return RS::where('tanggal' ,$args['tanggal'])->get();
         }elseif(isset($args['status'])) {
