@@ -63,13 +63,13 @@ class CreateHeader extends Mutation
 	            $detail->produk = $produk->nama;
 	            $detail->kuantitas = 1;
 	            $detail->harga = $produk->harga;
-	            $detail->diskon = $args['diskon'];
+	            isset($args['diskon'])?$detail->diskon = $args['diskon']:'';
 	            $detail->id_header_transaksi = $header->id;
 	            $detail->save();
-
+				
 	            $pembayaran->jenis = $args['jenis'];
 	            $pembayaran->jumlah = $args['jumlah'];
-	            $pembayaran->referensi = $args['referensi'];
+	            isset($args['referensi'])? $pembayaran->referensi = $args['referensi']:'';
 	            $pembayaran->id_header_transaksi = $header->id;
 	            $pembayaran->save();
 
