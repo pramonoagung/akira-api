@@ -230,7 +230,7 @@ return [
 				'DeleteKetersediaanTerapis' => App\GraphQL\Mutation\Manajemen\DeleteKetersediaanTerapis::class,
 				'DeletePenempatan' => App\GraphQL\Mutation\Manajemen\DeletePenempatan::class,
 				'DeleteWorkshift' => App\GraphQL\Mutation\Manajemen\DeleteWorkshift::class,
-
+				'createRating' => App\GraphQL\Mutation\Terapis\CreateRating::class,
 				'UpdateAbout' => App\GraphQL\Mutation\About\UpdateAbout::class
 
 			],
