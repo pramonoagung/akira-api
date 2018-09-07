@@ -175,9 +175,9 @@ return [
 				'deleteHeaderReservasi'	=> App\GraphQL\Mutation\Reservasi\HeaderRDM::class,
 				'batalReservasi'	=> App\GraphQL\Mutation\Reservasi\BatalReservasi::class,
 
-				'createTerapis'	=> App\GraphQL\Mutation\Terapis\TerapisCM::class,
-				'updateTerapis'	=> App\GraphQL\Mutation\Terapis\TerapisUM::class,
-				'deleteTerapis'	=> App\GraphQL\Mutation\Terapis\TerapisDM::class,
+				// 'createTerapis'	=> App\GraphQL\Mutation\Terapis\TerapisCM::class,
+				// 'updateTerapis'	=> App\GraphQL\Mutation\Terapis\TerapisUM::class,
+				// 'deleteTerapis'	=> App\GraphQL\Mutation\Terapis\TerapisDM::class,
 
 				'createStatusReservasi'	=> App\GraphQL\Mutation\Reservasi\StatusRCM::class,
 				'updateStatusReservasi'	=> App\GraphQL\Mutation\Reservasi\StatusRUM::class,
@@ -185,7 +185,6 @@ return [
 				'TerimaReservasi'	=> App\GraphQL\Mutation\Reservasi\TerimaReservasi::class,
 				'TolakReservasi'	=> App\GraphQL\Mutation\Reservasi\TolakReservasi::class,
 				'CheckinReservasi'	=> App\GraphQL\Mutation\Reservasi\CheckinReservasi::class,
-
 
 				'createDetailReservasi'	=> App\GraphQL\Mutation\Reservasi\DetailRCM::class,
 				'updateDetailReservasi'	=> App\GraphQL\Mutation\Reservasi\DetailRUM::class,

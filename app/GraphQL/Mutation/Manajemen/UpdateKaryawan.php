@@ -15,7 +15,7 @@ class UpdateKaryawan extends Mutation
 	];
 	public function type()
 	{
-		return Type::listOf(GraphQL::type('KaryawanType'));
+		return GraphQL::type('KaryawanType');
 	}
 	public function args()
 	{
@@ -28,11 +28,11 @@ class UpdateKaryawan extends Mutation
 	public function resolve($root, $args)
 	{
 		$data = Karyawan::find($args['id']);
-		$data->nama = $args['nama'];
-		$data->jenis_kelamin = $args['jenis_kelamin'];
+		isset($args['nama'])?$data->nama = $args['nama']:'';
+		isset($args['jenis_kelamin'])?$data->jenis_kelamin = $args['jenis_kelamin']:'';
 
         $data->save();
 
-		return Karyawan::all();
+		return $data;
 	}
 }
