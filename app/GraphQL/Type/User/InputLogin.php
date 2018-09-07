@@ -32,6 +32,10 @@ class InputLogin extends GraphQLType
 									'type' 	=> Type::string(),
 									'rules' => ['required', 'string'],
 								],
+			'fcm_token'		=> 	[
+									'name' 	=> 'fcm_token', 		
+									'type' 	=> Type::string()
+								],
 		];
 	}
 }

@@ -67,6 +67,9 @@ class Authenticate extends Mutation
 			throw new \Exception("Invalid authentication", 1000);
 		}
 
+		//save device FCM reg id
+		$this->setFcmId($user->id,$args['input']['fcm_token']);
+
 		// Create JWT
 		$jwt_key 	= env("JWT_KEY");
 		$token 		= [
@@ -83,5 +86,11 @@ class Authenticate extends Mutation
 					'token' => $jwt_token,
 					'user' 	=> $user,
 				];
+	}
+
+	private function setFcmId($userId, $fcmToken){
+		$deviceReg = User::find($userId);
+		$deviceReg->device_reg_id = $fcmToken;
+		$deviceReg->save();
 	}
 }
