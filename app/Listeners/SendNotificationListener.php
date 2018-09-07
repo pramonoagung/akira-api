@@ -30,14 +30,13 @@ class SendNotificationListener
      */
     public function handle(SendNotification $event)
     {
-        
-        return $this->sendPush($event->token);
+        return $this->sendPush($event->token, $event->pesan);
     }
 
-    private function sendPush($deviceID){
+    private function sendPush($deviceID, $pesan){
         
         $args['title'] = "Akira Reflexiology";
-        $args['body'] = "Yay, Reservasi kamu telah diterima";
+        $args['body'] = $pesan;
         $optionBuilder = new OptionsBuilder();
         $optionBuilder->setTimeToLive(60*20);
         
