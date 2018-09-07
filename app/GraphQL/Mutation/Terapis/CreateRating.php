@@ -45,9 +45,8 @@ class CreateRating extends Mutation
         return $rating;
     }
     
-    private function setDone($args){
-        $reservasi = ReservasiHeader::find($args['header_reservasi_id']);
-        dd($args);
+    private function setDone($id){
+        $reservasi = ReservasiHeader::find($id);
         if($reservasi){
             try{
                 DB::beginTransaction();
