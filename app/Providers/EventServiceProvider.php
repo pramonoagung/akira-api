@@ -24,5 +24,8 @@ class EventServiceProvider extends ServiceProvider
          'App\Events\AddLogKepemilikanEvent' => [
             'App\Listeners\AddLogKepemilikanListener',
         ],
+         'App\Events\SendNotification' => [
+            'App\Listeners\SendNotificationListener',
+        ],
     ];
 }

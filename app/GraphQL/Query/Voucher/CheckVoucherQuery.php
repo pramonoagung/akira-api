@@ -28,7 +28,7 @@ class CheckVoucherQuery extends Query
 	public function resolve($root, $args){
 		
 		$event = event(new CheckVoucherEvent($args['kode']));
-		// dd($event[0][1]);
+		
 		if($event){
 			return ['kode'=>$event[0][1],'jumlah'=>$event[0][0]];
 		}else
