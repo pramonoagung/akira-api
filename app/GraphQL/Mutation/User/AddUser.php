@@ -79,7 +79,6 @@ class AddUser extends Mutation
             $user->username     = $args['username'];
             $user->nama         = $args['nama'];
             $user->jenis_kelamin= $args['jk'];
-            $user->device_reg_id= $args['token'];
             $user->password     = app('hash')->make($args['password']);
             $user->save();
             DB::Commit();
