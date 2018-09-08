@@ -30,6 +30,7 @@ class SendNotificationListener
      */
     public function handle(SendNotification $event)
     {
+        \Log::info('pusheed');
         return $this->sendPush($event->token, $event->pesan);
     }
 

@@ -35,7 +35,8 @@ class TerimaReservasi extends Mutation
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
         if(isset($args['ref_id'])){
-            \Log::info($args['ref_id']);
+            \Log::info('sini 1');
+
             $reservasi = ReservasiHeader::where('kode', $args['ref_id'])->first();
             if($reservasi){
                 try{
@@ -46,10 +47,11 @@ class TerimaReservasi extends Mutation
                     $status->tanggal = \Carbon\Carbon::now()->toDateTimeString();
                     $status->save();
                     DB::Commit();
-                    $user = User::find($reservasi->tamu);
+                    $user = User::where('username',$reservasi->tamu)->first();
                     $event = event(new SendNotification($user->device_reg_id, "Yay, Reservasi kamu diterima"));
                     return $status;
                 }catch(\Exception $e){
+\Log::info(json_encode($e->getMessage()));
                     DB::Rollback();
                 }
             }else
@@ -58,6 +60,7 @@ class TerimaReservasi extends Mutation
             }
         } 
         else if(isset($args['header_reservasi_id'])){
+            \Log::info('sini 2');
             $reservasi = ReservasiHeader::find($args['header_reservasi_id']);
             if($reservasi){
                 try{
@@ -78,7 +81,9 @@ class TerimaReservasi extends Mutation
             {
                 throw new \Exception("Kode Reservasi not Exists", 999);
             }
-        }
+        }else{
+            \Log::info('sini 3');
+    }
     }
 }
     

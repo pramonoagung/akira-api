@@ -167,6 +167,7 @@ return [
 				'resetPassword'		=> App\GraphQL\mutation\User\ResetPassword::class,
 				'changeProfile'		=> App\GraphQL\mutation\User\ChangeProfile::class,
 				'forgetPassword'	=> App\GraphQL\mutation\User\ForgetPassword::class,
+				'logoutUser'		=> App\GraphQL\mutation\User\LogoutUser::class,
 				'pushnotif'			=> App\GraphQL\mutation\notifikasi\SendNotification::class,
 				'broadcast'			=> App\GraphQL\mutation\notifikasi\GlobalBroadcast::class,
 

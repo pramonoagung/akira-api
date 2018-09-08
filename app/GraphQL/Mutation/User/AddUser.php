@@ -12,7 +12,8 @@ use Thunderlabid\Otorisasi\Models\Tenant;
 class AddUser extends Mutation
 {
     protected $attributes = [
-        'name' => 'AddUser'
+        'name' => 'AddUser',
+        'description' => 'Ini untuk tambah user',
     ];
     
     public function type()
