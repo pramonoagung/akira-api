@@ -37,6 +37,10 @@ class VoucherType extends GraphQLType
 				'type' => Type::string(),
 				'description' => 'syarat Voucher'
 			],
+			'status' => [
+				'type' => Type::string(),
+				'description' => 'status Voucher'
+			],
 			'logo_voucher' => [
 				'type' => Type::string(),
 				'description' => 'logo_voucher Voucher'

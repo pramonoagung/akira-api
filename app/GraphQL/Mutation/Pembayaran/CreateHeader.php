@@ -43,12 +43,12 @@ class CreateHeader extends Mutation
 		$reservasi = ReservasiHeader::where('kode', $args['ref_id'])->first();
 		if($reservasi){
 			try{
-				$dreservasi = ReservasiDetail::where('header_reservasi_id', $reservasi->id)->first();
-				$produk = Produk::where('id', $dreservasi->produk_id)->first();
-				// dd($produk->nama);
+
+				$dreservasi = ReservasiDetail::where('header_reservasi_id', $reservasi->id)->get();
+				
+				// dd($dreservasi[0]->produk_id);
 	            DB::beginTransaction();
 	            $header = new HeaderTransaksi;
-	            $detail = new DetailTransaksi;
 	            $pembayaran = new Pembayaran;
 	            $header->nomor = 123;
 	            $header->tanggal = $args['tanggal'];
@@ -59,14 +59,23 @@ class CreateHeader extends Mutation
 	            $header->nomor = date('ymd')."HT".$inc; 
 	            $header->save();
 
-	            $detail->ref_id = $args['ref_id'];
-	            $detail->produk = $produk->nama;
-	            $detail->kuantitas = 1;
-	            $detail->harga = $produk->harga;
-	            isset($args['diskon'])?$detail->diskon = $args['diskon']:'';
-	            $detail->id_header_transaksi = $header->id;
-	            $detail->save();
-				
+	            $i = 0;
+
+	            foreach($dreservasi as $datas){
+	            	$detail = new DetailTransaksi;
+	            	$produk = Produk::where('id', $datas->produk_id)->first();
+	            	$detail->ref_id = $args['ref_id'];
+		            $detail->produk = $produk->nama;
+		            $detail->kuantitas = 1;
+		            $detail->harga = $produk->harga;
+		            isset($args['diskon'])?$detail->diskon = $args['diskon']:'';
+		            $detail->id_header_transaksi = $header->id;
+		            $detail->save();
+		            $i += 1;
+	            } 
+	            // dd($i);
+
+
 	            $pembayaran->jenis = $args['jenis'];
 	            $pembayaran->jumlah = $args['jumlah'];
 	            isset($args['referensi'])? $pembayaran->referensi = $args['referensi']:'';

@@ -31,7 +31,7 @@ class CreateRating extends Mutation
             'user_id' => ['name'=> 'user_id', 'type' => Type::nonNull(Type::int())],
             'rating' => ['name'=> 'rating', 'type' => Type::nonNull(Type::int())],
             'komentar' => ['name'=> 'komentar', 'type' => Type::string()],
-            'status' => ['name'=> 'komentar', 'type' => Type::string()]
+            'status' => ['name'=> 'status', 'type' => Type::string()]
         ];
     }
     
