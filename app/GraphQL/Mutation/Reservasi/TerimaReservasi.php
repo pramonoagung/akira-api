@@ -51,7 +51,7 @@ class TerimaReservasi extends Mutation
                     $event = event(new SendNotification($user->device_reg_id, "Yay, Reservasi kamu diterima"));
                     return $status;
                 }catch(\Exception $e){
-\Log::info(json_encode($e->getMessage()));
+                    \Log::info(json_encode($e->getMessage()));
                     DB::Rollback();
                 }
             }else

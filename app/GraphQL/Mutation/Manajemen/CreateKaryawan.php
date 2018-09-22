@@ -57,8 +57,8 @@ class CreateKaryawan extends Mutation
             foreach($hari as $item){
                   $workshift = Workshift::create([
                       'hari' => $item,
-                      'jam_mulai' => '08:00:00',
-                      'jam_akhir' => '16:00:00',
+                      'jam_mulai' => '10:00:00',
+                      'jam_akhir' => '22:00:00',
                       'penempatan_id' =>$penempatan->id
                   ]);
             }
@@ -66,9 +66,9 @@ class CreateKaryawan extends Mutation
             foreach($hari as $item){
                   $ketersediaanterapis = KetersediaanTerapis::create([
                       'hari' => $item,
-                      'jam_mulai' => '08:00:00',
-                      'jam_akhir' => '16:00:00',
-                      'penempatan_id' =>$penempatan->id
+                      'jam_mulai' => '10:00:00',
+                      'jam_akhir' => '22:00:00',
+                      'penempatan_id' => $penempatan->id
                   ]);
             }
             

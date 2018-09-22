@@ -13,16 +13,19 @@ class DisableWorkshift extends Mutation
 	protected $attributes = [
 		'name' => 'DisableWorkshift'
 	];
+
 	public function type()
 	{
 		return (GraphQL::type('WorkshiftType'));
 	}
+
 	public function args()
 	{
 		return [
 			'id' => ['name' => 'id', 'type' => Type::int()],
 		];
 	}
+	
 	public function resolve($root, $args)
 	{
 

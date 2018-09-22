@@ -12,8 +12,8 @@ use Thunderlabid\Reservasi\Models\ReservasiStatus as RS;
 use Thunderlabid\Reservasi\Models\ReservasiHeader as RH;
 
 /**
- * User Query
- */
+* User Query
+*/
 class CekKetersediaanTerapis extends Query
 {
 	
@@ -24,7 +24,7 @@ class CekKetersediaanTerapis extends Query
 	{
 		return Type::listOf(GraphQL::type('CekKetersediaanTerapisType'));
 	}
-
+	
 	public function args()
 	{
 		return [
@@ -34,34 +34,47 @@ class CekKetersediaanTerapis extends Query
 			'jk' => ['name' => 'jk', 'type' => Type::nonNull(Type::string())]
 		];
 	}
-
+	
 	public function resolve($root, $args)
 	{
+		$startWorking='10:00:00';
+		$endWorking='22:00:00';
 		$waktuReservasi = date("H:i:s",strtotime($args['tanggal']));
 		$tanggalReservasi = date("Y-m-d",strtotime($args['tanggal']));
-		
-		$tglWktSelesai = $tanggalReservasi.' '.$args['jam_berakhir'];
-		//1. cek siapa yang bertugas (KARYAWAN_ID)
-		//Cari yg flag = 1 dan hari = $args['hari]
-		$terapisId = Karyawan::where('jenis_kelamin', $args['jk'])->
-		wherehas('penempatan', function($q)use($args){$q->wherehas('workshift', function($v)use($args){$v->where('hari', $args['hari'])->where('flag',1);});})->get(['id']);
-		$kid    = array_column($terapisId->toarray(), 'id');
-		
-		//cocokin interval waktu tanggal dan waktu reservasi dengan resrvasi yang udah diterima
-		//trus ambil karyawan_id nya
-		$karyawanBertugas = DB::table('header_reservasi')
+		if($waktuReservasi >= $startWorking && $waktuReservasi <= $endWorking){
+			\Log::info('Ok');
+			$tglWktSelesai = $tanggalReservasi.' '.$args['jam_berakhir'];
+			//1. cek siapa yang bertugas (KARYAWAN_ID)
+			//Cari yg flag = 1 dan hari = $args['hari]
+			$terapisId = Karyawan::where('jenis_kelamin', $args['jk'])->
+			wherehas('penempatan', function($q)use($args){
+				$q->wherehas('workshift', function($v)use($args){
+					$v->where('hari', $args['hari'])
+					->where('flag',1);
+				});
+			})->get(['id']);
+			$kid    = array_column($terapisId->toarray(), 'id');
+			
+			//cocokin interval waktu tanggal dan waktu reservasi dengan resrvasi yang udah diterima
+			//trus ambil karyawan_id nya
+			$karyawanBertugas = DB::table('header_reservasi')
 			->join('status_reservasi', 'header_reservasi.id', '=', 'status_reservasi.header_reservasi_id')
-            ->join('detail_reservasi', 'header_reservasi.id', '=', 'detail_reservasi.header_reservasi_id')
+			->join('detail_reservasi', 'header_reservasi.id', '=', 'detail_reservasi.header_reservasi_id')
 			->where('status_reservasi.status','=','diterima')
 			->where('status_reservasi.progress','!=','selesai')
 			->where('header_reservasi.tanggal_reservasi','>=',$args['tanggal'])
 			->where('header_reservasi.tanggal_reservasi','<=',$tglWktSelesai)
-            ->select('detail_reservasi.karyawan_id')
+			->select('detail_reservasi.karyawan_id')
 			->get();
-		$tid    = array_column($karyawanBertugas->toarray(), 'karyawan_id');
-		
-	    $karyawan   = Karyawan::wherenotin('id', $tid)->where('jenis_kelamin', $args['jk'])->get();
-		return $karyawan;
+			$tid    = array_column($karyawanBertugas->toarray(), 'karyawan_id');
+			
+			$karyawan   = Karyawan::wherenotin('id', $tid)->where('jenis_kelamin', $args['jk'])->get();
+			return $karyawan;
+		}
+		else{
+			\Log::info('Oh noo!!');
+			return ['nama'=> 'Terapis Tidak Tersedia'];
+		}
 	}
-
+	
 }

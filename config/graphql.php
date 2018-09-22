@@ -140,15 +140,15 @@ return [
 				'produk'			=> App\GraphQL\Query\Produk\ProdukQ::class,
 				'cekProduk'			=> App\GraphQL\Query\Produk\CekProdukQ::class,
 				'terapis'			=> App\GraphQL\Query\Terapis\TerapisQ::class,
-				'cekTerapis'			=> App\GraphQL\Query\Terapis\CekTerapisQ::class,
+				'cekTerapis'		=> App\GraphQL\Query\Terapis\CekTerapisQ::class,
 				'KaryawanQuery'		=> App\GraphQL\Query\Manajemen\KaryawanQuery::class,
 				'KetersediaanTerapisQuery'		=> App\GraphQL\Query\Manajemen\KetersediaanTerapisQuery::class,
 				'PenempatanQuery'		=> App\GraphQL\Query\Manajemen\PenempatanQuery::class,
 				'WorkshiftQuery'		=> App\GraphQL\Query\Manajemen\WorkshiftQuery::class,
-				'CheckVoucherQuery'	=> App\GraphQL\Query\Voucher\CheckVoucherQuery::class,
+				'CheckVoucherQuery'		=> App\GraphQL\Query\Voucher\CheckVoucherQuery::class,
 				'CekKetersediaanTerapis'=> App\GraphQL\Query\Manajemen\CekKetersediaanTerapis::class,
 				'CheckVoucherQuery'		=> App\GraphQL\Query\Voucher\CheckVoucherQuery::class,
-				'AboutQuery'=> App\GraphQL\Query\About\AboutQuery::class,
+				'AboutQuery'			=> App\GraphQL\Query\About\AboutQuery::class,
 				'rating'				=> App\GraphQL\Query\Terapis\Rating::class
 
 			],

@@ -44,7 +44,7 @@ class ChangeProfile extends Mutation
         if(isset($args['scope'])){
             return $this->updateAdmin($args,$user);
         }else{
-            return $this->updateUser($args);
+            return $this->updateUser($args, $user);
         }
     }
     
@@ -67,14 +67,13 @@ class ChangeProfile extends Mutation
         }
     }
     
-    private function updateUser($args){
+    private function updateUser($args, $user){
         try{
             DB::BeginTransaction();
-            $user   = new User;
-            $user->username     = $args['username'];
-            $user->nama         = $args['nama'];
-            $user->jenis_kelamin= $args['jk'];
-            $user->password     = app('hash')->make($args['password']);
+            isset($args['username']) ? $user->username  = $args['username']:'';
+            isset($args['nama']) ? $user->nama          = $args['nama']:'';
+            isset($args['jk']) ? $user->jenis_kelamin   = $args['jk']:'';
+            isset($args['password']) ?$user->password   = app('hash')->make($args['password']):'';
             $user->save();
             DB::Commit();
             return $user;
