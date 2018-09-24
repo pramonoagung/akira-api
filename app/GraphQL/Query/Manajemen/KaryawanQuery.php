@@ -25,7 +25,9 @@ class KaryawanQuery extends Query
 			'nip' => ['name' => 'nip', 'type' => Type::string()],
 			'nama' => ['name' => 'nama', 'type' => Type::string()],
 			'jenis_kelamin' => ['name' => 'jenis_kelamin', 'type' => Type::string()],
-			'rating' => ['name' => 'rating', 'type' => Type::string()]
+			'rating' => ['name' => 'rating', 'type' => Type::string()],
+			'skip' => ['name' => 'skip', 'type' => Type::int()],
+            'take' => ['name' => 'take', 'type' => Type::int()],
 		];
 	}
 	public function resolve($root, $args)

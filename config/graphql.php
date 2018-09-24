@@ -147,7 +147,6 @@ return [
 				'WorkshiftQuery'		=> App\GraphQL\Query\Manajemen\WorkshiftQuery::class,
 				'CheckVoucherQuery'		=> App\GraphQL\Query\Voucher\CheckVoucherQuery::class,
 				'CekKetersediaanTerapis'=> App\GraphQL\Query\Manajemen\CekKetersediaanTerapis::class,
-				'CheckVoucherQuery'		=> App\GraphQL\Query\Voucher\CheckVoucherQuery::class,
 				'AboutQuery'			=> App\GraphQL\Query\About\AboutQuery::class,
 				'rating'				=> App\GraphQL\Query\Terapis\Rating::class
 

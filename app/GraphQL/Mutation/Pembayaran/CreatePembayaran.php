@@ -31,9 +31,9 @@ class CreatePembayaran extends Mutation
 	public function resolve($root, $args)
 	{
 		// dd('Tunai');
-		Pembayaran::create($args);
+		$bayar = Pembayaran::create($args);
 
-		return Pembayaran::all();
+		return $bayar;
 		
 		/*$voucher = Voucher::where('kode',$args['referensi'])->first();
 

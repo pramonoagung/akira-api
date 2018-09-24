@@ -51,7 +51,7 @@ class CreateHeader extends Mutation
 	            $header = new HeaderTransaksi;
 	            $pembayaran = new Pembayaran;
 	            $header->nomor = 123;
-	            $header->tanggal = $args['tanggal'];
+	            $header->tanggal = date("Y-m-d");
 	            $header->save();
 
 	            $inc = 100000 + $header->id;

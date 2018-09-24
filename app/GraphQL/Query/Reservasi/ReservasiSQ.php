@@ -27,7 +27,7 @@ class ReservasiSQ extends Query
             'header_reservasi_id' => ['name' => 'header_reservasi_id', 'type' => Type::int()],
             'tanggal' => ['name' => 'tanggal', 'type' => Type::string()],
             'status' => ['name' => 'status', 'type' => Type::string()],
-            'progress' => ['name' => 'progress', 'type' => Type::string()],
+            'progress' => ['name' => 'progress', 'type' => Type::string()]
         ];
     }
 

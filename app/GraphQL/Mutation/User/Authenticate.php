@@ -68,7 +68,7 @@ class Authenticate extends Mutation
 		}
 
 		//save device FCM reg id
-		$this->setFcmId($user->id,$args['input']['fcm_token']);
+		isset($args['input']['fcm_token'])? $this->setFcmId($user->id,$args['input']['fcm_token']):'';
 
 		// Create JWT
 		$jwt_key 	= env("JWT_KEY");
