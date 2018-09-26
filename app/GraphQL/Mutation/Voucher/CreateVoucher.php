@@ -48,7 +48,7 @@ class CreateVoucher extends Mutation
 	            $voucher->tanggal_kadaluarsa = $args['tanggal_kadaluarsa'];
 	            $voucher->logo_voucher = $args['logo_voucher'];
 	            $voucher->status = 1;
-	            $voucher->owner_id = $args['pemilik'];
+				$voucher->owner_id = $args['pemilik'];//id user bukan username -> makanya failed
 	            $voucher->save();
 	            
 	            DB::Commit();
