@@ -25,6 +25,7 @@ class CreateVoucher extends Mutation
 		return [
 			'kode' => ['name' => 'kode', 'type' => Type::nonNull(Type::string())],
 			'jumlah' => ['name' => 'jumlah', 'type' => Type::string()],
+			'pemilik' => ['name' => 'pemilik', 'type' => Type::string()],
 			'tanggal_kadaluarsa' => ['name' => 'tanggal_kadaluarsa', 'type' => Type::nonNull(Type::string())],
 			'logo_voucher' => ['name' => 'logo_voucher', 'type' => Type::string()],
 		];
@@ -47,7 +48,7 @@ class CreateVoucher extends Mutation
 	            $voucher->tanggal_kadaluarsa = $args['tanggal_kadaluarsa'];
 	            $voucher->logo_voucher = $args['logo_voucher'];
 	            $voucher->status = 1;
-	            $voucher->owner_id = 1;
+	            $voucher->owner_id = $args['pemilik'];
 	            $voucher->save();
 	            
 	            DB::Commit();

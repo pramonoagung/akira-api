@@ -23,7 +23,7 @@ class UpdateVoucher extends Mutation
 		return [
 			'id' => ['name' => 'id', 'type' => Type::int()],
 			'kode' => ['name' => 'kode', 'type' => Type::string()],
-			'jenis' => ['name' => 'jenis', 'type' => Type::string()],
+			'username' => ['name' => 'username', 'type' => Type::string()],
 			'jumlah' => ['name' => 'jumlah', 'type' => Type::int()],
 			'syarat' => ['name' => 'syarat', 'type' => Type::string()],
 			'tanggal_kadaluarsa' => ['name' => 'tanggal_kadaluarsa', 'type' => Type::string()],
@@ -37,7 +37,7 @@ class UpdateVoucher extends Mutation
 		try{
 			DB::BeginTransaction();
 			isset($args['kode'])?$voucher->kode = $args['kode']:'';
-			isset($args['jenis'])?$voucher->jenis = $args['jenis']:'';
+			isset($args['username'])?$voucher->owner_id = $args['username']:'';
 			isset($args['jumlah'])?$voucher->jumlah = $args['jumlah']:'';
 			isset($args['syarat'])?$voucher->syarat = $args['syarat']:'';
 			isset($args['tanggal_kadaluarsa'])?$voucher->tanggal_kadaluarsa = $args['tanggal_kadaluarsa']:'';
