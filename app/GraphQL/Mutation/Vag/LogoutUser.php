@@ -1,6 +1,6 @@
 <?php
 
-namespace App\GraphQL\Mutation\User;
+namespace App\GraphQL\Mutation\Vag;
 
 use GraphQL, DB;
 use GraphQL\Type\Definition\Type;

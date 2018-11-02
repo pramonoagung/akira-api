@@ -1,6 +1,6 @@
 <?php
 
-namespace App\GraphQL\Mutation\User;
+namespace App\GraphQL\Mutation\Vag;
 
 use Folklore\GraphQL\Support\Mutation;
 use GraphQL\Type\Definition\ResolveInfo;
