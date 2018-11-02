@@ -163,10 +163,10 @@ return [
 				'AddScope'			=> App\GraphQL\Mutation\User\AddScope::class,
 				'RemoveScope'		=> App\GraphQL\Mutation\User\RemoveScope::class,
 				'Deactivate'		=> App\GraphQL\Mutation\User\Deactivate::class,
-				'resetPassword'		=> App\GraphQL\mutation\Vag\ResetPassword::class,
-				'changeProfile'		=> App\GraphQL\mutation\Vag\ChangeProfile::class,
-				'forgetPassword'	=> App\GraphQL\mutation\Vag\ForgetPassword::class,
-				'logoutUser'		=> App\GraphQL\mutation\Vag\LogoutUser::class,
+				// 'resetPassword'		=> App\GraphQL\mutation\Vag\ResetPassword::class,
+				// 'changeProfile'		=> App\GraphQL\mutation\Vag\ChangeProfile::class,
+				// 'forgetPassword'	=> App\GraphQL\mutation\Vag\ForgetPassword::class,
+				// 'logoutUser'		=> App\GraphQL\mutation\Vag\LogoutUser::class,
 				//'pushnotif'			=> App\GraphQL\mutation\notifikasi\SendNotification::class,
 				//'broadcast'			=> App\GraphQL\mutation\notifikasi\GlobalBroadcast::class,
 
@@ -178,6 +178,11 @@ return [
 				// 'createTerapis'	=> App\GraphQL\Mutation\Terapis\TerapisCM::class,
 				// 'updateTerapis'	=> App\GraphQL\Mutation\Terapis\TerapisUM::class,
 				// 'deleteTerapis'	=> App\GraphQL\Mutation\Terapis\TerapisDM::class,
+
+				'resetPassword'		=> App\GraphQL\mutation\ResetPass::class,
+				'changeProfile'		=> App\GraphQL\mutation\EditProfile::class,
+				'forgetPassword'	=> App\GraphQL\mutation\ForgetPass::class,
+				'logoutUser'		=> App\GraphQL\mutation\SignOut::class,
 
 				'createStatusReservasi'	=> App\GraphQL\Mutation\Reservasi\StatusRCM::class,
 				'updateStatusReservasi'	=> App\GraphQL\Mutation\Reservasi\StatusRUM::class,
